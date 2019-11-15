@@ -1,0 +1,28 @@
+# Require the Azure provider plugin
+require 'vagrant-azure'
+
+# Create and configure the Azure VMs
+Vagrant.configure('2') do |config|
+
+  # Use dummy Azure box
+  config.vm.box = 'azure-dummy'
+
+  # Specify SSH key
+  config.ssh.private_key_path = '~/.ssh/id_rsa'
+
+  # Configure the Azure provider
+  config.vm.provider 'azure' do |az, override|
+    # Pull Azure AD service principal information from environment variables
+    az.tenant_id = "38e72bba-3c22-4382-9323-ac1612931297"
+    az.client_id = "http://azure-cli-2019-11-15-14-18-05"
+    az.client_secret = "c6e76472-f14b-4d9f-bbfa-c5293777cd47"
+    az.subscription_id = "2a36ea96-2890-4201-abfe-39dacf821363"
+
+    # Specify VM parameters
+    az.vm_name = 'vm1ynov'
+    az.vm_size = 'Standard_F2s_v2'
+    az.vm_image_urn = 'Canonical:UbuntuServer:18.04-LTS:latest'
+    az.resource_group_name = 'vagrantfr'
+    az.location = 'francecentral'
+  end # config.vm.provider 'azure'
+end # Vagrant.configure

@@ -55,16 +55,16 @@ Configuration du serveur Zabbix :
     
 ## Nommage des serveurs
 
-SRV1
+SRV1.loscharros.com
   - OpenLDAP
   - FTP
   - Zabbix
     
-SRV2
+SRV2.loscharros.com
   - OpenLDAP
   - FTP
     
-SRV3
+SRV3.loscharros.com
   - OpenLDAP
   - FTP
 
@@ -80,8 +80,11 @@ La connexion SSH sera activée sur ces serveurs.
 Domaine : loscharros.com 
 
 Gateway : 10.0.0.254
+
 SRV1 : 10.0.0.1 (Bordeaux)
+
 SRV2 : 10.0.0.2 (Toulouse)
+
 SRV3 : 10.0.0.3 (Paris)
 
 Tous les serveurs seront dans le même VLAN.

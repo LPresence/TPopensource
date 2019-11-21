@@ -1,4 +1,4 @@
-#Mise en place d'une infrastructure virtualisée, redondée et sauvegardée.
+# Mise en place d'une infrastructure virtualisée, redondée et sauvegardée.
 Les serveurs seront hébergées sur la plateforme Microsoft Azure.
 
 A l'aide de l'offre étudiante Ynov, nous bénéficions d'un crédit de 100$ pour utiliser cette plateforme.
@@ -40,7 +40,7 @@ Configuration du serveur Zabbix :
     - Création des alertes/notifications
     - Création des utilisateurs
     
-####Nommage : 
+#### Nommage des serveurs : 
 
 SRV1
   - OpenLDAP
@@ -55,7 +55,7 @@ SRV3
   - OpenLDAP
   - FTP
 
-####Plan d'adressage réseau
+#### Plan d'adressage réseau
 
 Le plan d'adressage sera 
 

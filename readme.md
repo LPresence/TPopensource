@@ -1,4 +1,7 @@
 # Mise en place d'une infrastructure virtualisée, redondée et sauvegardée.
+
+## Résumé
+
 Les serveurs seront hébergées sur la plateforme Microsoft Azure.
 
 A l'aide de l'offre étudiante Ynov, nous bénéficions d'un crédit de 100$ pour utiliser cette plateforme.

@@ -94,4 +94,3 @@ Tous les serveurs seront dans le même VLAN.
 Le meilleur projet, par LOS CHARROS. <3
 
 ![GitHub Logo](los_infra.png)
-Format: ![Alt Text](url)

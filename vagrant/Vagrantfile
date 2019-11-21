@@ -15,15 +15,15 @@ Vagrant.configure('2') do |config|
     config.vm.define "srv#{i}" do |srv|
       srv.vm.provider 'azure' do |az|
         # Pull Azure AD service principal information from environment variables
-        az.tenant_id = "38e72bba-3c22-4382-9323-ac1612931297"
-        az.client_id = "http://azure-cli-2019-11-15-14-18-05"
-        az.client_secret = "c6e76472-f14b-4d9f-bbfa-c5293777cd47"
-        az.subscription_id = "2a36ea96-2890-4201-abfe-39dacf821363"
+        az.tenant_id = ENV['AZURE_TENANT_ID']
+        az.client_id = ENV['AZURE_CLIENT_ID']
+        az.client_secret = ENV['AZURE_CLIENT_SECRET']
+        az.subscription_id = ENV['AZURE_SUBSCRIPTION_ID']
         az.vm_image_urn = 'Canonical:UbuntuServer:18.04-LTS:latest'
         az.resource_group_name = 'LosCharros.com'
         az.location = 'francecentral'
         az.vm_name = "srv#{i}"
-        az.vm_size = 'Standard_F2s_v2'
+        az.vm_size = 'Standard_F1s'
         az.admin_username = "admin#{i}"
         az.vm_password = "admin#{i}pass"
       end

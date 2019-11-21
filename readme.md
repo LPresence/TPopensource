@@ -1,7 +1,22 @@
-holà
+Hola
 
-Serveur OpenLDAP repliqué et sauvegardé sur 3 sites
+Mise en place d'une infrastructure virtualisée, redondée et sauvegardée.
+Les serveurs seront hébergées sur la plateforme Microsoft Azure.
 
-Serveur FTP repliqué et sauvegardé sur 3 sites
+A l'aide de l'offre étudiante Ynov, nous bénéficions d'un crédit de 100$ pour utiliser cette plateforme.
 
-Serveur Zabbix de monitoring de l'infrastructure
+L'infrastrucure comprend plusieurs serveurs : 
+
+- 3 serveurs avec les services suivants :
+  - OpenLDAP
+  - FTP
+  - Zabbix (monitoring de l'infrastructure)
+  
+Le déploiement de ces 3 serveurs sera automatisé via Vagrant, un connecteur pour la plateforme Azure est disponible.
+
+Le modèle de ces serveurs est le Standard_F2sv2, avec comme configuration : 
+- 4 GO de RAM
+- 2 CPU
+- 1 NIC
+- 4 HDD
+

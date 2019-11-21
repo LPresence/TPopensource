@@ -77,6 +77,8 @@ Le plan d'adressage sera :
 Les serveurs seront configuré en IP statique.
 La connexion SSH sera activée sur ces serveurs.
 
+Domaine : loscharros.com 
+
 Gateway : 10.0.0.254
 SRV1 : 10.0.0.1 (Bordeaux)
 SRV2 : 10.0.0.2 (Toulouse)
@@ -84,3 +86,6 @@ SRV3 : 10.0.0.3 (Paris)
 
 Tous les serveurs seront dans le même VLAN.
     
+
+
+Le meilleur projet, par LOS CHARROS. <3

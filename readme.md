@@ -43,7 +43,7 @@ Configuration du serveur Zabbix :
     - Création des alertes/notifications
     - Création des utilisateurs
     
-#### Nommage des serveurs : 
+## Nommage des serveurs : 
 
 SRV1
   - OpenLDAP
@@ -58,11 +58,13 @@ SRV3
   - OpenLDAP
   - FTP
 
-#### Plan d'adressage réseau
+## Configuration réseau
 
-Le plan d'adressage sera 
+Le plan d'adressage sera :
 
 10.0.0.0/24 
+
+Les serveurs seront configuré en IP statique.
 
 Gateway : 10.0.0.254
 SRV1 : 10.0.0.1

@@ -2,6 +2,9 @@
 
 ## Résumé
 
+Dans le cadre du cours Open Source, réalisation d'un projet :
+Mise en place d'une infrastructure avec déploiement automatisé de machines virtuelles, une configuration automatisée des services installés, ainsi qu'une sauvegarde de ces machines.
+
 Les serveurs seront hébergées sur la plateforme Microsoft Azure.
 
 A l'aide de l'offre étudiante Ynov, nous bénéficions d'un crédit de 100$ pour utiliser cette plateforme.
@@ -13,7 +16,7 @@ L'infrastrucure comprend plusieurs serveurs :
   - FTP
   - Zabbix (monitoring de l'infrastructure)
   
-Le déploiement de ces 3 serveurs sera automatisé via Vagrant, un connecteur pour la plateforme Azure est disponible.
+Le déploiement de ces 3 serveurs sera automatisé via Vagrant, un connecteur pour la plateforme Azure est disponible. Tous les paramêtres seront configurés via cet outil.
 
 Le modèle de ces serveurs est le Standard_F2sv2, avec comme configuration : 
   - 4 GO de RAM
@@ -43,7 +46,7 @@ Configuration du serveur Zabbix :
     - Création des alertes/notifications
     - Création des utilisateurs
     
-## Nommage des serveurs : 
+## Nommage des serveurs
 
 SRV1
   - OpenLDAP
@@ -65,11 +68,12 @@ Le plan d'adressage sera :
 10.0.0.0/24 
 
 Les serveurs seront configuré en IP statique.
+La connexion SSH sera activée sur ces serveurs.
 
 Gateway : 10.0.0.254
 SRV1 : 10.0.0.1
 SRV2 : 10.0.0.2
 SRV3 : 10.0.0.3
 
-Tous les serveurs seront dans le même VLAN
+Tous les serveurs seront dans le même VLAN.
     

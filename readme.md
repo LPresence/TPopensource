@@ -24,6 +24,13 @@ Le modèle de ces serveurs est le Standard_F2sv2, avec comme configuration :
   - 1 NIC
   - 4 HDD
 
+L'entreprise est composée de 3 sites : 
+  - Bordeaux : Site principale
+  - Toulouse : Succursale n°1
+  - Paris : Succursale n°2
+  
+  1 serveur sera disposé sur chaque site.
+
 Afin de faciliter et d'optimiser le déploiement de l'infrastructure, la configuration de l'ensemble des services sera effectuée via Ansible.
 
 Ansible permettra la configuration automatique des 3 serveurs : 
@@ -71,9 +78,9 @@ Les serveurs seront configuré en IP statique.
 La connexion SSH sera activée sur ces serveurs.
 
 Gateway : 10.0.0.254
-SRV1 : 10.0.0.1
-SRV2 : 10.0.0.2
-SRV3 : 10.0.0.3
+SRV1 : 10.0.0.1 (Bordeaux)
+SRV2 : 10.0.0.2 (Toulouse)
+SRV3 : 10.0.0.3 (Paris)
 
 Tous les serveurs seront dans le même VLAN.
     

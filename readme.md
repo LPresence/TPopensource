@@ -53,6 +53,10 @@ Configuration du serveur Zabbix :
     - Création des alertes/notifications
     - Création des utilisateurs
     
+## Commandes de base
+
+vagrant up --no-parallel
+
 ## Nommage des serveurs
 
 SRV1.loscharros.com

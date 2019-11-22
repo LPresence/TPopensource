@@ -1,0 +1,12 @@
+---
+- name: main launch file
+  hosts: srv-azure
+  remote_user: vagrant
+  become: yes
+  become_method: sudo
+
+  tasks:
+
+  - include: install_openldap
+  - include: install_ftp
+  - include: zabbix

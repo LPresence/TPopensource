@@ -25,9 +25,9 @@ Le modèle de ces serveurs est le Standard_F2sv2, avec comme configuration :
   - 4 HDD
 
 L'entreprise est composée de 3 sites : 
-  - Bordeaux : Site principale
-  - Toulouse : Succursale n°1
-  - Paris : Succursale n°2
+  - Bordeaux :  Site principale
+  - Toulouse :  Succursale n°1
+  - Paris    :  Succursale n°2
   
   1 serveur sera disposé sur chaque site.
 

@@ -14,8 +14,8 @@ Vagrant.configure('2') do |conf|
         azure.subscription_id = ENV['AZURE_SUBSCRIPTION_ID']
 
         azure.vm_image_urn = 'Canonical:UbuntuServer:18.04-LTS:latest'
-        azure.admin_username = 'adminynov' 
-        azure.vm_password = 'Ynov01<3' 
+       # azure.admin_username = 'adminynov' 
+       # azure.vm_password = 'Ynov01<3' 
 
         azure.location = 'northeurope' 
         azure.resource_group_name = 'LosCharros.com'

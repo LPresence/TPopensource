@@ -1,32 +1,53 @@
-# Require the Azure provider plugin
 require 'vagrant-azure'
 
-# Create and configure the Azure VMs
-Vagrant.configure('2') do |config|
+Vagrant.configure('2') do |conf|
+  conf.vm.boot_timeout = 1000
+  conf.vm.box = 'azure-dummy'
+  conf.ssh.private_key_path = '~/.ssh/id_rsa'
+  do_common_azure_stuff = Proc.new do |azure, override|
 
-  # Use dummy Azure box
-  config.vm.box = 'azure-dummy'
+	azure.tenant_id = ENV['AZURE_TENANT_ID']
+        azure.client_id = ENV['AZURE_CLIENT_ID']
+        azure.client_secret = ENV['AZURE_CLIENT_SECRET']
+        azure.subscription_id = ENV['AZURE_SUBSCRIPTION_ID']
 
-  # Specify SSH key
-  config.ssh.private_key_path = '~/.ssh/id_rsa'
+        azure.vm_image_urn = 'Canonical:UbuntuServer:18.04-LTS:latest'
+        azure.admin_username = 'adminynov' 
+        azure.vm_password = 'Ynov01<3' 
 
-  # Configure the Azure provider
-  (1..3).each do |i|
-    config.vm.define "srv#{i}" do |srv|
-      srv.vm.provider 'azure' do |az|
-        # Pull Azure AD service principal information from environment variables
-        az.tenant_id = ENV['AZURE_TENANT_ID']
-        az.client_id = ENV['AZURE_CLIENT_ID']
-        az.client_secret = ENV['AZURE_CLIENT_SECRET']
-        az.subscription_id = ENV['AZURE_SUBSCRIPTION_ID']
-        az.vm_image_urn = 'Canonical:UbuntuServer:18.04-LTS:latest'
-        az.resource_group_name = 'LosCharros.com'
-        az.location = 'francecentral'
-        az.vm_name = "srv#{i}"
-        az.vm_size = 'Standard_F1s'
-        az.admin_username = "admin#{i}"
-        az.vm_password = "admin#{i}pass"
-      end
-    end 
-  end  
-end 
+        azure.location = 'northeurope' 
+        azure.resource_group_name = 'LosCharros.com'
+
+  end
+  conf.vm.define 'first' do |cfg|
+    cfg.vm.provider :azure do |azure, override|
+      do_common_azure_stuff.call azure, override
+      azure.vm_name = 'srv1'
+      azure.vm_size = 'Standard_F1s'
+      azure.virtual_network_name = 'vagrantVNET'
+    end
+  end
+
+  conf.vm.define 'second' do |cfg|
+    cfg.vm.provider :azure do |azure, override|
+      do_common_azure_stuff.call azure, override
+      azure.vm_name = 'srv2'
+      azure.vm_size = 'Standard_F1s'
+      azure.virtual_network_name = 'vagrantVNET'
+    end
+  end
+
+  conf.vm.define 'third' do |cfg|
+    cfg.vm.provider :azure do |azure, override|
+      do_common_azure_stuff.call azure, override
+      azure.vm_name = 'srv3'
+      azure.vm_size = 'Standard_F1s'
+      azure.virtual_network_name = 'vagrantVNET'
+    end
+  end
+
+  # Executes powershell on the remote machine and returns the hostname
+#  conf.vm.provision 'shell', inline: 'hostname'
+
+end
+

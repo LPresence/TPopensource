@@ -20,6 +20,32 @@ Vagrant.configure('2') do |conf|
         azure.resource_group_name = 'LosCharros.com'
 
   end
+  conf.vm.define 'first' do |cfg|
+    cfg.vm.provider :azure do |azure, override|
+      do_common_azure_stuff.call azure, override
+      azure.vm_name = 'srv1'
+      azure.vm_size = 'Standard_F1s'
+      azure.virtual_network_name = 'vagrantVNET'
+    end
+  end
+
+  conf.vm.define 'second' do |cfg|
+    cfg.vm.provider :azure do |azure, override|
+      do_common_azure_stuff.call azure, override
+      azure.vm_name = 'srv2'
+      azure.vm_size = 'Standard_F1s'
+      azure.virtual_network_name = 'vagrantVNET'
+    end
+  end
+
+  conf.vm.define 'third' do |cfg|
+    cfg.vm.provider :azure do |azure, override|
+      do_common_azure_stuff.call azure, override
+      azure.vm_name = 'srv3'
+      azure.vm_size = 'Standard_F1s'
+      azure.virtual_network_name = 'vagrantVNET'
+    end
+  end
   
   (1..3).each do |i|
     conf.vm.define "srv#{i}" do |cfg|

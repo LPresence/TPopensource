@@ -4,7 +4,8 @@ ENV['VAGRANT_NO_PARALLEL'] = 'yes'
 Vagrant.configure('2') do |conf|
   conf.vm.boot_timeout = 1000
   conf.vm.box = 'azure-dummy'
-  conf.ssh.private_key_path = '~/.ssh/id_rsa'
+  conf.ssh.private_key_path = '/home/kalus/TPopensource/vagrant/id_rsa'
+
   do_common_azure_stuff = Proc.new do |azure, override|
 
 	azure.tenant_id = ENV['AZURE_TENANT_ID']
@@ -34,6 +35,12 @@ Vagrant.configure('2') do |conf|
 
   # Executes powershell on the remote machine and returns the hostname
   conf.vm.provision 'shell', inline: 'hostname'
+  conf.vm.provision 'shell', inline: $createuser
 
 end
+
+$createuser = <<EOF
+useradd -m -p sa140XEeV5h72 ynov
+
+EOF
 

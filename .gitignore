@@ -1,2 +1,3 @@
 env.sh
 .vagrant
+id_rsa*

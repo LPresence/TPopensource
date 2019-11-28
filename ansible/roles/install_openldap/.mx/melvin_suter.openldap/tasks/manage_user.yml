@@ -1,0 +1,26 @@
+---
+
+- name: Generate Password
+  command: slappasswd -s "{{ item.userPassword }}"
+  register: command_output
+  when: item.userPassword | default(-1) != -1
+
+- name: merging variables
+  set_fact: 
+    openldap_usersettings: "{{ item.attributes | combine({'userPassword' : command_output.stdout}, recursive=True ) }}"
+  when: item.userPassword | default(-1) != -1
+
+- name: merging variables without password
+  set_fact: 
+    openldap_usersettings: "{{ item.attributes }}"
+  when: item.userPassword | default(-1) == -1
+
+- name: Modify ldap user
+  ldap_entry:
+    dn: "{{ item.dn }}"
+    bind_dn: cn=Admin,{{ openldap_domain }}
+    bind_pw: "{{ openldap_rootpw }}"
+    objectClass: "{{ item.objectClass }}"
+    attributes: "{{ openldap_usersettings }}" 
+    state: "{{ item.state | default('present') }}"
+

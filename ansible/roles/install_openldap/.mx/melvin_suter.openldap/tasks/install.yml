@@ -1,0 +1,45 @@
+---
+- name: Install packages
+  yum:
+    name: "{{ openldap_packages }}"
+    state: present
+
+- name: Setup Firewall
+  firewalld:
+    port: 389/tcp
+    state: enabled
+    permanent: yes
+    immediate: yes
+  when: openldap_public == true
+
+- name: Create Folders
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ openldap_user }}"
+    group: "{{ openldap_group }}"
+  with_items:
+  - "{{ openldap_db }}"
+  - "{{ openldap_log }}"
+
+- name: Set Selinux Context
+  sefcontext:
+    target: "{{ item.path }}(/.*)?"
+    setype: "{{ item.selinux }}"
+    state: present
+  with_items:
+  - path: "{{ openldap_db }}"
+    selinux: slapd_db_t
+  - path: "{{ openldap_log }}"
+    selinux: slapd_log_t
+
+- name: Apply SELinux Rules
+  command: restorecon -ir /srv
+
+- name: Start service
+  systemd:
+    name: "slapd"
+    state: started
+    enabled: yes
+
+

@@ -1,0 +1,636 @@
+---
+- name: "SCORED | 5_1_1 | PATCH | Ensure cron daemon is enabled"
+  service:
+      name: "{{ cron_service[ansible_os_family] }}"
+      enabled: true
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_1_1_Ensure_cron_daemon_is_enabled
+  tags:
+      - level1
+      - scored
+      - patch
+      - cron
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_1_1_Ensure_cron_daemon_is_enabled
+
+- name: "SCORED | 5_1_2 | PATCH | Ensure permissions on /etc/crontab are configured"
+  file:
+      dest: /etc/crontab
+      owner: root
+      group: root
+      mode: 0600
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_1_2_Ensure_permissions_on_etccrontab_are_configured
+  tags:
+      - level1
+      - scored
+      - patch
+      - cron
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_1_2_Ensure_permissions_on_etccrontab_are_configured
+
+- name: "SCORED | 5_1_3 | PATCH | Ensure permissions on /etc/cron_hourly are configured"
+  file:
+      dest: /etc/cron_hourly
+      state: directory
+      owner: root
+      group: root
+      mode: 0700
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_1_3_Ensure_permissions_on_etccron_hourly_are_configured
+  tags:
+      - level1
+      - scored
+      - patch
+      - cron
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_1_3_Ensure_permissions_on_etccron_hourly_are_configured
+
+- name: "SCORED | 5_1_4 | PATCH | Ensure permissions on /etc/cron_daily are configured"
+  file:
+      dest: /etc/cron_daily
+      state: directory
+      owner: root
+      group: root
+      mode: 0700
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_1_4_Ensure_permissions_on_etccron_daily_are_configured
+  tags:
+      - level1
+      - scored
+      - patch
+      - cron
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_1_4_Ensure_permissions_on_etccron_daily_are_configured
+
+- name: "SCORED | 5_1_5 | PATCH | Ensure permissions on /etc/cron_weekly are configured"
+  file:
+      dest: /etc/cron_weekly
+      state: directory
+      owner: root
+      group: root
+      mode: 0700
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_1_5_Ensure_permissions_on_etccron_weekly_are_configured
+  tags:
+      - level1
+      - scored
+      - patch
+      - cron
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_1_5_Ensure_permissions_on_etccron_weekly_are_configured
+
+- name: "SCORED | 5_1_6 | PATCH | Ensure permissions on /etc/cron_monthly are configured"
+  file:
+      dest: /etc/cron_monthly
+      state: directory
+      owner: root
+      group: root
+      mode: 0700
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_1_6_Ensure_permissions_on_etccron_monthly_are_configured
+  tags:
+      - level1
+      - scored
+      - patch
+      - cron
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_1_6_Ensure_permissions_on_etccron_monthly_are_configured
+
+- name: "SCORED | 5_1_7 | PATCH | Ensure permissions on /etc/cron_d are configured"
+  file:
+      dest: /etc/cron_d
+      state: directory
+      owner: root
+      group: root
+      mode: 0700
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_1_7_Ensure_permissions_on_etccron_d_are_configured
+  tags:
+      - level1
+      - scored
+      - patch
+      - cron
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_1_7_Ensure_permissions_on_etccron_d_are_configured
+
+- name: "SCORED | 5_1_8 | PATCH | Ensure at/cron is restricted to authorized users"
+  block:
+      - name: "SCORED | 5_1_8 | PATCH | Ensure at/cron is restricted to authorized users"
+        file:
+            dest: /etc/at_deny
+            state: absent
+
+      - name: "SCORED | 5_1_8 | PATCH | Check if at_allow exists"
+        stat:
+            path: "/etc/at_allow"
+        register: at_allow
+
+      - name: "SCORED | 5_1_8 | PATCH | Ensure at/cron is restricted to authorized users"
+        file:
+            dest: /etc/at_allow
+            state: '{{ "file" if  at_allow_stat_exists else "touch" }}'
+            owner: root
+            group: root
+            mode: 0600
+
+      - name: "SCORED | 5_1_8 | PATCH | Ensure at/cron is restricted to authorized users"
+        file:
+            dest: /etc/cron_deny
+            state: absent
+
+      - name: "SCORED | 5_1_8 | PATCH | Check if cron_allow exists"
+        stat:
+            path: "/etc/cron_allow"
+        register: cron_allow
+
+      - name: "SCORED | 5_1_8 | PATCH | Ensure at/cron is restricted to authorized users"
+        file:
+            dest: /etc/cron_allow
+            state: '{{ "file" if  cron_allow_stat_exists else "touch" }}'
+            owner: root
+            group: root
+            mode: 0600
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_1_8_Ensure_atcron_is_restricted_to_authorized_users
+  tags:
+      - level1
+      - scored
+      - patch
+      - cron
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_1_8_Ensure_atcron_is_restricted_to_authorized_users
+
+- name: "SCORED | 5_2_1 | PATCH | Ensure permissions on /etc/ssh/sshd_config are configured"
+  file:
+      dest: /etc/ssh/sshd_config
+      state: file
+      owner: root
+      group: root
+      mode: 0600
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_2_1_Ensure_permissions_on_etcsshsshd_config_are_configured
+  tags:
+      - level1
+      - scored
+      - patch
+      - sshd
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_2_1_Ensure_permissions_on_etcsshsshd_config_are_configured
+
+- name: "SCORED | 5_2_2 | PATCH | Ensure SSH Protocol is set to 2"
+  lineinfile:
+      state: present
+      dest: /etc/ssh/sshd_config
+      regexp: '^Protocol'
+      line: 'Protocol 2'
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_2_2_Ensure_SSH_Protocol_is_set_to_2
+  tags:
+      - level1
+      - scored
+      - patch
+      - sshd
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_2_2_Ensure_SSH_Protocol_is_set_to_2
+
+- name: "SCORED | 5_2_3 | PATCH | Ensure SSH LogLevel is set to INFO"
+  lineinfile:
+      state: present
+      dest: /etc/ssh/sshd_config
+      regexp: '^LogLevel'
+      line: 'LogLevel INFO'
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_2_3_Ensure_SSH_LogLevel_is_set_to_INFO
+  tags:
+      - level1
+      - scored
+      - patch
+      - sshd
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_2_3_Ensure_SSH_LogLevel_is_set_to_INFO
+
+- name: "SCORED | 5_2_4 | PATCH | Ensure SSH X11 forwarding is disabled"
+  lineinfile:
+      state: present
+      dest: /etc/ssh/sshd_config
+      regexp: '^X11Forwarding'
+      line: 'X11Forwarding no'
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_2_4_Ensure_SSH_X11_forwarding_is_disabled
+  tags:
+      - level1
+      - scored
+      - patch
+      - sshd
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_2_4_Ensure_SSH_X11_forwarding_is_disabled
+
+- name: "SCORED | 5_2_5 | PATCH | Ensure SSH MaxAuthTries is set to 4 or less"
+  lineinfile:
+      state: present
+      dest: /etc/ssh/sshd_config
+      regexp: '^(#)?MaxAuthTries \d'
+      line: 'MaxAuthTries 4'
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_2_5_Ensure_SSH_MaxAuthTries_is_set_to_4_or_less
+  tags:
+      - level1
+      - scored
+      - patch
+      - sshd
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_2_5_Ensure_SSH_MaxAuthTries_is_set_to_4_or_less
+
+- name: "SCORED | 5_2_6 | PATCH | Ensure SSH IgnoreRhosts is enabled"
+  lineinfile:
+      state: present
+      dest: /etc/ssh/sshd_config
+      regexp: '^IgnoreRhosts'
+      line: 'IgnoreRhosts yes'
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_2_6_Ensure_SSH_IgnoreRhosts_is_enabled
+  tags:
+      - level1
+      - scored
+      - patch
+      - sshd
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_2_6_Ensure_SSH_IgnoreRhosts_is_enabled
+
+- name: "SCORED | 5_2_7 | PATCH | Ensure SSH HostbasedAuthentication is disabled"
+  lineinfile:
+      state: present
+      dest: /etc/ssh/sshd_config
+      regexp: '^HostbasedAuthentication'
+      line: 'HostbasedAuthentication no'
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_2_7_Ensure_SSH_HostbasedAuthentication_is_disabled
+  tags:
+      - level1
+      - scored
+      - patch
+      - sshd
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_2_7_Ensure_SSH_HostbasedAuthentication_is_disabled
+
+- name: "SCORED | 5_2_8 | PATCH | Ensure SSH root login is disabled"
+  lineinfile:
+      state: present
+      dest: /etc/ssh/sshd_config
+      regexp: '^PermitRootLogin'
+      line: 'PermitRootLogin no'
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_2_8_Ensure_SSH_root_login_is_disabled
+  tags:
+      - level1
+      - scored
+      - patch
+      - sshd
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_2_8_Ensure_SSH_root_login_is_disabled
+
+- name: "SCORED | 5_2_9 | PATCH | Ensure SSH PermitEmptyPasswords is disabled"
+  lineinfile:
+      state: present
+      dest: /etc/ssh/sshd_config
+      regexp: '^PermitEmptyPasswords'
+      line: 'PermitEmptyPasswords no'
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_2_9_Ensure_SSH_PermitEmptyPasswords_is_disabled
+  tags:
+      - level1
+      - scored
+      - patch
+      - sshd
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_2_9_Ensure_SSH_PermitEmptyPasswords_is_disabled
+
+- name: "SCORED | 5_2_10 | PATCH | Ensure SSH PermitUserEnvironment is disabled"
+  lineinfile:
+      state: present
+      dest: /etc/ssh/sshd_config
+      regexp: '^PermitUserEnvironment'
+      line: 'PermitUserEnvironment no'
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_2_10_Ensure_SSH_PermitUserEnvironment_is_disabled
+  tags:
+      - level1
+      - scored
+      - patch
+      - sshd
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_2_10_Ensure_SSH_PermitUserEnvironment_is_disabled
+
+- name: "SCORED | 5_2_11 | PATCH | Ensure only approved MAC algorithms are used"
+  lineinfile:
+      state: present
+      dest: /etc/ssh/sshd_config
+      regexp: '^MACs'
+      line: 'MACs hmac-sha2-512-etm@openssh_com,hmac-sha2-256-etm@openssh_com,umac-128-etm@openssh_com,hmac-sha2-512,hmac-sha2-256,umac-128@openssh_com'
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_2_11_Ensure_only_approved_MAC_algorithms_are_used
+  tags:
+      - level1
+      - scored
+      - patch
+      - sshd
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_2_11_Ensure_only_approved_MAC_algorithms_are_used
+
+- name: "SCORED | 5_2_12 | PATCH | Ensure SSH Idle Timeout Interval is configured"
+  block:
+      - name: "SCORED | 5_2_12 | PATCH | Ensure SSH Idle Timeout Interval is configured"
+        lineinfile:
+            state: present
+            dest: /etc/ssh/sshd_config
+            regexp: '^ClientAliveInterval'
+            line: "ClientAliveInterval {{ ubuntu1804cis_sshd['clientaliveinterval'] }}"
+
+      - name: "SCORED | 5_2_12 | PATCH | Ensure SSH ClientAliveCountMax set to <= 3"
+        lineinfile:
+            state: present
+            dest: /etc/ssh/sshd_config
+            regexp: '^ClientAliveCountMax'
+            line: "ClientAliveCountMax {{ ubuntu1804cis_sshd['clientalivecountmax'] }}"
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_2_12_Ensure_SSH_Idle_Timeout_Interval_is_configured
+  tags:
+      - level1
+      - scored
+      - patch
+      - sshd
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_2_12_Ensure_SSH_Idle_Timeout_Interval_is_configured
+
+- name: "SCORED | 5_2_13 | PATCH | Ensure SSH LoginGraceTime is set to one minute or less"
+  lineinfile:
+      state: present
+      dest: /etc/ssh/sshd_config
+      regexp: '^LoginGraceTime'
+      line: "LoginGraceTime 60"
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_2_13_Ensure_SSH_LoginGraceTime_is_set_to_one_minute_or_less
+  tags:
+      - level1
+      - scored
+      - patch
+      - sshd
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_2_13_Ensure_SSH_LoginGraceTime_is_set_to_one_minute_or_less
+
+- name: "SCORED | 5_2_14 | PATCH | Ensure SSH access is limited"
+  block:
+      - name: "SCORED | 5_2_14 | PATCH | Ensure SSH access is limited - allowusers"
+        lineinfile:
+            state: present
+            dest: /etc/ssh/sshd_config
+            regexp: '^AllowUsers'
+            line: "AllowUsers {{ ubuntu1804cis_sshd['allowusers'] }}"
+        notify:
+            - restart sshd
+        when:
+            - "ubuntu1804cis_sshd['allowusers']|default('') != ''"
+
+      - name: "SCORED | 5_2_14 | PATCH | Ensure SSH access is limited - allowgroups"
+        lineinfile:
+            state: present
+            dest: /etc/ssh/sshd_config
+            regexp: '^AllowGroups'
+            line: "AllowGroups {{ ubuntu1804cis_sshd['allowgroups'] }}"
+        notify:
+            - restart sshd
+        when:
+            - "ubuntu1804cis_sshd['allowgroups']|default('') != ''"
+
+      - name: "SCORED | 5_2_14 | PATCH | Ensure SSH access is limited - denyusers"
+        lineinfile:
+            state: present
+            dest: /etc/ssh/sshd_config
+            regexp: '^DenyUsers'
+            line: "DenyUsers {{ ubuntu1804cis_sshd['denyusers'] }}"
+        notify:
+            - restart sshd
+        when:
+            - "ubuntu1804cis_sshd['denyusers']|default('') != ''"
+
+      - name: "SCORED | 5_2_14 | PATCH | Ensure SSH access is limited - denygroups"
+        lineinfile:
+            state: present
+            dest: /etc/ssh/sshd_config
+            regexp: '^DenyGroups'
+            line: "DenyGroups {{ ubuntu1804cis_sshd['denygroups'] }}"
+        notify:
+            - restart sshd
+        when:
+            - "ubuntu1804cis_sshd['denygroups']|default('') != ''"
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_2_14_Ensure_SSH_access_is_limited
+  tags:
+      - level1
+      - scored
+      - patch
+      - sshd
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_2_14_Ensure_SSH_access_is_limited
+
+- name: "SCORED | 5_2_15 | PATCH | Ensure SSH warning banner is configured"
+  lineinfile:
+      state: present
+      dest: /etc/ssh/sshd_config
+      regexp: '^Banner'
+      line: 'Banner /etc/issue_net'
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_2_15_Ensure_SSH_warning_banner_is_configured
+  tags:
+      - level1
+      - scored
+      - patch
+      - sshd
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_2_15_Ensure_SSH_warning_banner_is_configured
+
+- name: "SCORED | 5_3_1 | PATCH | Ensure password creation requirements are configured"
+  block:
+      - name: "SCORED | 5_3_1 | PATCH | Ensure lipam-pwquality is installed"
+        apt:
+            name: libpam-pwquality
+            state: present
+            install_recommends: false
+
+      - name: "SCORED | 5_3_1 | PATCH | Ensure password creation requirements are configured"
+        lineinfile:
+            state: present
+            dest: /etc/security/pwquality_conf
+            regexp: '^{{ item_key }}'
+            line: '{{ item_key }} = {{ item_value }}'
+        with_items:
+            - { key: 'minlen', value: '14' }
+            - { key: 'dcredit', value: '-1' }
+            - { key: 'ucredit', value: '-1' }
+            - { key: 'ocredit', value: '-1' }
+            - { key: 'lcredit', value: '-1' }
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_3_1_Ensure_password_creation_requirements_are_configured
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_3_1_Ensure_password_creation_requirements_are_configured
+
+- name: "SCORED | 5_3_2 | PATCH | Ensure lockout for failed password attempts is configured"
+  command: /bin/true
+  changed_when: false
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_3_2_Ensure_lockout_for_failed_password_attempts_is_configured
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_3_2_Ensure_lockout_for_failed_password_attempts_is_configured
+      - notimplemented
+
+- name: "SCORED | 5_3_3 | PATCH | Ensure password reuse is limited"
+  command: /bin/true
+  changed_when: false
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_3_3_Ensure_password_reuse_is_limited
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_3_3_Ensure_password_reuse_is_limited
+      - notimplemented
+
+- name: "SCORED | 5_3_4 | PATCH | Ensure password hashing algorithm is SHA-512"
+  command: authconfig --passalgo=sha512 --update
+  changed_when: false
+  failed_when: false
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_3_4_Ensure_password_hashing_algorithm_is_SHA-512
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_3_4_Ensure_password_hashing_algorithm_is_SHA-512
+
+- name: "SCORED | 5_4_1_1 | PATCH | Ensure password expiration is 90 days or less"
+  lineinfile:
+      state: present
+      dest: /etc/login_defs
+      regexp: '^PASS_MAX_DAYS'
+      line: "PASS_MAX_DAYS {{ ubuntu1804cis_pass['max_days'] }}"
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_4_1_1_Ensure_password_expiration_is_90_days_or_less
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_4_1_1_Ensure_password_expiration_is_90_days_or_less
+
+- name: "SCORED | 5_4_1_2 | PATCH | Ensure minimum days between password changes is 7 or more"
+  lineinfile:
+      state: present
+      dest: /etc/login_defs
+      regexp: '^PASS_MIN_DAYS'
+      line: "PASS_MIN_DAYS {{ ubuntu1804cis_pass['min_days'] }}"
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_4_1_2_Ensure_minimum_days_between_password_changes_is_7_or_more
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_4_1_2_Ensure_minimum_days_between_password_changes_is_7_or_more
+
+- name: "SCORED | 5_4_1_3 | PATCH | Ensure password expiration warning days is 7 or more"
+  lineinfile:
+      state: present
+      dest: /etc/login_defs
+      regexp: '^PASS_WARN_AGE'
+      line: "PASS_WARN_AGE {{ ubuntu1804cis_pass['warn_age'] }}"
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_4_1_3_Ensure_password_expiration_warning_days_is_7_or_more
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_4_1_3_Ensure_password_expiration_warning_days_is_7_or_more
+
+- name: "SCORED | 5_4_1_4 | PATCH | Ensure inactive password lock is 30 days or less"
+  command: /bin/true
+  changed_when: false
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_4_1_4_Ensure_inactive_password_lock_is_30_days_or_less
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_4_1_4_Ensure_inactive_password_lock_is_30_days_or_less
+      - notimplemented
+
+- name: "SCORED | 5_4_2 | PATCH | Ensure system accounts are non-login"
+  command: /bin/true
+  changed_when: false
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_4_2_Ensure_system_accounts_are_non-login
+  tags:
+      - level1
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_4_2_Ensure_system_accounts_are_non-login
+      - notimplemented
+      - scored
+
+- name: "SCORED | 5_4_3 | PATCH | Ensure default group for the root account is GID 0"
+  command: usermod -g 0 root
+  changed_when: false
+  failed_when: false
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_4_3_Ensure_default_group_for_the_root_account_is_GID_0
+  tags:
+      - level1
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_4_3_Ensure_default_group_for_the_root_account_is_GID_0
+      - scored
+
+- name: "SCORED | 5_4_4 | PATCH | Ensure default user umask is 027 or more restrictive"
+  block:
+
+      - name: "SCORED | 5_4_4 | PATCH | Check if bashrc exists"
+        stat:
+            path: "/etc/bashrc"
+        register: bashrc_present
+
+      - name: "SCORED | 5_4_4 | PATCH | Ensure default user umask is 027 or more restrictive - /etc/bashrc"
+        replace:
+            path: /etc/bashrc
+            regexp: '(^\s+umask) 002'
+            replace: '\1 027'
+        when: bashrc_present_stat_exists
+
+      - name: "SCORED | 5_4_4 | PATCH | Ensure default user umask is 027 or more restrictive - /etc/profile"
+        replace:
+            path: /etc/profile
+            regexp: '(^\s+umask) 002'
+            replace: '\1 027'
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_4_4_Ensure_default_user_umask_is_027_or_more_restrictive
+  tags:
+      - level1
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_4_4_Ensure_default_user_umask_is_027_or_more_restrictive
+      - scored
+
+- name: "NOTSCORED | 5_5 | PATCH | Ensure root login is restricted to system console"
+  command: /bin/true
+  changed_when: false
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_5_Ensure_root_login_is_restricted_to_system_console
+  tags:
+      - level1
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_5_Ensure_root_login_is_restricted_to_system_console
+      - notscored
+      - notimplemented
+
+- name: "SCORED | 5_6 | PATCH | Ensure access to the su command is restricted"
+  lineinfile:
+      state: present
+      dest: /etc/pam_d/su
+      regexp: '^(#)?auth\s+required\s+pam_wheel\_so'
+      line: "auth           required        pam_wheel_so use_uid"
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_6_Ensure_access_to_the_su_command_is_restricted
+  tags:
+      - level1
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_6_Ensure_access_to_the_su_command_is_restricted
+      - scored
+
+- name: "SCORED | 5_6 | PATCH | Ensure access to the su command is restricted - sudo group contains root"
+  user:
+      name: root
+      groups: sudo
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_6_Ensure_access_to_the_su_command_is_restricted
+  tags:
+      - level1
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_5_6_Ensure_access_to_the_su_command_is_restricted
+      - scored

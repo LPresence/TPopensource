@@ -1,6 +1,6 @@
 ---
 
-zabbix_version: 4.4
+zabbix_version: 3.4
 zabbix_repo: zabbix
 
 zabbix_server_package_state: present

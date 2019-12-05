@@ -1,0 +1,57 @@
+---
+openldap_public: no
+
+# Schemas
+openldap_schemas:
+- /etc/openldap/schema/cosine.ldif
+- /etc/openldap/schema/nis.ldif
+- /etc/openldap/schema/inetorgperson.ldif
+
+# Domain
+openldap_domain: dc=example,dc=org
+openldap_dc: example
+openldap_o: example org
+
+# Root PW
+openldap_rootpw: ChangeMe
+
+# OUs
+openldap_ous:
+- Users
+- Groups
+- Special Users
+
+openldap_entries:
+- dn: cn=LDAPPosix,ou=Groups,{{ openldap_domain}}
+  objectClass:
+  - top
+  - posixGroup
+  attributes:
+    cn: LDAPPosix
+    gidNumber: 1001
+    description: All Posix Users                                                                                                       
+
+openldap_users:
+- dn: uid=kolab-service,ou=Special Users,{{ openldap_domain}}
+  objectClass:
+  - organizationalRole
+  - top
+  userPassword: ChangeMe 
+  attributes:
+    cn: kolab-service
+
+- dn: uid=example,ou=Users,{{ openldap_domain}}
+  objectClass:
+  - inetOrgPerson
+  - top
+  - posixAccount
+  - shadowAccount
+  userPassword: ChangeMe
+  attributes:
+    cn: example 
+    givenName: Test
+    surName: Example
+    mail: test@example.org
+    uidNumber: 1001
+    gidNumber: 1001
+

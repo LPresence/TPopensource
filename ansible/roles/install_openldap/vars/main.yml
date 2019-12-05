@@ -1,2 +1,4 @@
 ---
-# vars file for install_openldap
+
+env:
+ RUNLEVEL: 1

@@ -1,40 +1,61 @@
-Role Name
-=========
+openldap_server
+===============
 
-A brief description of the role goes here.
+This roles installs the OpenLDAP server on the target machine. It has the
+option to enable/disable SSL by setting it in defaults or overriding it.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should
-be mentioned here. For instance, if the role uses the EC2 module, it may be a
-good idea to mention in this section that the boto package is required.
+This role requires Ansible 1.4 or higher, and platform requirements are listed
+in the metadata file.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including
-any variables that are in defaults/main.yml, vars/main.yml, and any variables
-that can/should be set via parameters to the role. Any variables that are read
-from other roles and/or the global scope (ie. hostvars, group vars, etc.) should
-be mentioned here as well.
+The variables that can be passed to this role and a brief description about
+them are as follows:
+
+    openldap_serverdomain_name: example.com    # The domain prefix for ldap
+    openldap_serverrootpw: passme              # This is the password for admin for openldap
+    openldap_serverenable_ssl: true            # To enable/disable ssl for the ldap
+    openldap_servercountry: US                 # The self signed ssl certificate parameters
+    openldap_serverstate: Oregon
+    openldap_serverlocation: Portland
+    openldap_serverorganization: IT
+
+
+Examples
+--------
+
+1) Configure an OpenLDAP server without SSL:
+
+    - hosts: all
+      sudo: true
+      roles:
+      - role: bennojoy.openldap_server
+        openldap_server_domain_name: example.com
+        openldap_server_rootpw: passme
+        openldap_server_enable_ssl: false
+       
+2) Configure an OpenLDAP server with SSL:
+
+    - hosts: all
+      sudo: true
+      roles:
+      - role: bennojoy.openldap_server
+        openldap_server_domain_name: example.com
+        openldap_server_rootpw: passme
+        openldap_server_enable_ssl: true
+        openldap_server_country: US
+        openldap_server_state: Oregon
+        openldap_server_location: Portland
+        openldap_server_organization: IT
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in
-regards to parameters that may need to be set for other roles, or variables that
-are used from other roles.
-
-Example Playbook
-----------------
-
-Including an example of how to use your role (for instance, with variables
-passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: install_openldap, x: 42 }
+None
 
 License
 -------
@@ -44,5 +65,6 @@ BSD
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a
-website (HTML is not allowed).
+Benno Joy
+
+

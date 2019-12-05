@@ -1,0 +1,154 @@
+---
+
+#############
+# RootPW  Setup
+#############
+
+- name: Generate Root Password
+  command: slappasswd -s "{{ openldap_rootpw }}"
+  register: command_output
+
+- name: Assign variable
+  set_fact:
+    openldap_rootpw_hash: "{{ command_output.stdout }}"
+
+- name: Create Tmp File
+  template:
+    src: templates/ldaprootpasswd.ldif.j2
+    dest: "{{ openldap_tmpldif }}"
+
+- name: Apply Root Password
+  command: ldapadd -Y EXTERNAL -H ldapi:/// -f {{ openldap_tmpldif }}
+
+- name: Delete Tmp File
+  file:
+    path: "{{ openldap_tmpldif }}"
+    state: absent
+
+#############
+# Config DB
+#############
+
+- name: Create DB File
+  template:
+    src: templates/DB_CONFIG.j2
+    dest: "{{ openldap_dbconfig }}"
+    owner: "{{ openldap_user }}"
+    group: "{{ openldap_group }}"
+
+- name: Restart service
+  systemd:
+    name: "slapd"
+    state: restarted
+
+#############
+# Schemas
+#############
+
+- name: Import Basic Schemas
+  command: ldapadd -Y EXTERNAL -H ldapi:/// -f {{ item }}
+  ignore_errors: yes # fails on duplicate 
+  with_items: "{{ openldap_schemas }}"
+
+#############
+# Domain Setup
+#############
+
+- name: Create Tmp File
+  template:
+    src: templates/ldapdomain.ldif.j2
+    dest: "{{ openldap_tmpldif }}"
+
+- name: Apply Domain Settings
+  command: ldapmodify -Y EXTERNAL -H ldapi:/// -f {{ openldap_tmpldif }}
+
+- name: Delete Tmp File
+  file:
+    path: "{{ openldap_tmpldif }}"
+    state: absent
+
+#############
+# MemberOf Setup
+#############
+
+- name: Create Tmp File
+  template:
+    src: templates/activate_memberof_1.ldif.j2
+    dest: "{{ openldap_tmpldif }}"
+
+- name: Apply MemberOf Settings 
+  command: ldapadd -Q -Y EXTERNAL -H ldapi:/// -f {{ openldap_tmpldif }}
+  ignore_errors: yes
+
+- name: Delete Tmp File
+  file:
+    path: "{{ openldap_tmpldif }}"
+    state: absent
+
+
+- name: Create Tmp File
+  template:
+    src: templates/activate_memberof_2.ldif.j2
+    dest: "{{ openldap_tmpldif }}"
+
+- name: Apply MemberOf Settings 
+  command: ldapadd -Q -Y EXTERNAL -H ldapi:/// -f {{ openldap_tmpldif }}
+  ignore_errors: yes
+
+- name: Delete Tmp File
+  file:
+    path: "{{ openldap_tmpldif }}"
+    state: absent
+
+
+#############
+# Refined
+#############
+
+- name: Create Tmp File
+  template:
+    src: templates/activate_refined_1.ldif.j2
+    dest: "{{ openldap_tmpldif }}"
+
+- name: Apply Refined Settings 
+  command: ldapmodify -Q -Y EXTERNAL -H ldapi:/// -f {{ openldap_tmpldif }}
+  ignore_errors: yes
+
+- name: Delete Tmp File
+  file:
+    path: "{{ openldap_tmpldif }}"
+    state: absent
+
+
+- name: Create Tmp File
+  template:
+    src: templates/activate_refined_2.ldif.j2
+    dest: "{{ openldap_tmpldif }}"
+
+- name: Apply Refined Settings 
+  command: ldapadd -Q -Y EXTERNAL -H ldapi:/// -f {{ openldap_tmpldif }}
+  ignore_errors: yes
+
+- name: Delete Tmp File
+  file:
+    path: "{{ openldap_tmpldif }}"
+    state: absent
+
+#############
+# Basic Setup
+#############
+
+- name: Create Tmp File
+  template:
+    src: templates/baseldapdomain.ldif.j2
+    dest: "{{ openldap_tmpldif }}"
+
+- name: Apply Base Settings
+  command: ldapadd -x -D cn=Admin,{{ openldap_domain }} -w "{{ openldap_rootpw }}" -f {{ openldap_tmpldif }} 
+  ignore_errors: yes # fails on duplicate
+
+- name: Delete Tmp File
+  file:
+    path: "{{ openldap_tmpldif }}"
+    state: absent
+

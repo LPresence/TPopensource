@@ -1,3 +1,71 @@
 ---
-- include: install_ldap.yml
-- include: configure_ldap.yml
+# tasks file for openldap
+
+- name: Include distribution specific variables
+  include_vars: "{{ ansible_distribution }}.yml"
+  tags: openldap
+
+- include: CentOS.yml
+  when: ansible_distribution == "CentOS"
+  tags: openldap
+
+- include: Ubuntu.yml
+  when: ansible_distribution == "Ubuntu"
+  tags: openldap
+
+- name: Create OpenLDAP defaults configuration
+  template: >
+    src=slapd_defaults.j2
+    dest={{ openldap_defaults_file }}
+    owner=root
+    group=root
+    mode=0644
+  notify: restart slapd
+  tags: openldap
+
+- name: Copy Samba LDAP schema
+  copy: >
+    src=samba.schema
+    dest={{ openldap_schema_directory }}
+    owner=root
+    group=root
+    mode=0644
+  tags: openldap
+
+- name: Hash OpenLDAP rootpw
+  command: slappasswd -h {{ openldap_server_password_hash }} -s {{ openldap_server_rootpw }}
+  register: rootpw
+  tags: openldap
+
+- name: Create OpenLDAP server configuration
+  template: >
+    src=slapd.conf.j2
+    dest={{ openldap_server_configuration }}
+    owner=root
+    group=root
+    mode=0644
+  notify: restart slapd
+  tags: openldap
+
+- name: Create OpenLDAP DB_CONFIG
+  template: >
+    src=DB_CONFIG.j2
+    dest={{ openldap_server_directory }}/DB_CONFIG
+    owner=openldap
+    group=openldap
+    mode=0600
+  notify: restart slapd
+  tags: openldap
+
+- name: Create OpenLDAP client configuration
+  template: >
+    src=ldap.conf.j2
+    dest={{ openldap_client_configuration }}
+    owner=root
+    group=root
+    mode=0644
+  tags: openldap
+
+- name: Ensure OpenLDAP service is started and enabled on boot
+  service: name=slapd state=started enabled=yes
+  tags: openldap

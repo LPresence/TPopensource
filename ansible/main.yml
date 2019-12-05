@@ -7,6 +7,6 @@
 
   roles:
 
-#  - include: install_openldap
+   - install_openldap
 #  - include: install_ftp
-  - zabbix
+#  - zabbix

@@ -1,0 +1,16 @@
+---
+# tasks file for openldap (Ubuntu specific)
+
+- name: Do not autoconfigure OpenLDAP
+  debconf: >
+    name=slapd
+    question='slapd/no_configuration'
+    value=true
+    vtype=boolean
+  tags: openldap
+
+- name: Install OpenLDAP packages
+  apt: name={{ item }} state=present update_cache=yes
+  with_items: "{{ openldap_packages }}"
+  environment: "{{ env }}"
+  tags: openldap

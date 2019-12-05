@@ -1,18 +1,61 @@
 ---
+# defaults file for openldap
 
-#The domain prefix for ldap
-openldap_server_domain_name: loscharros.com
+openldap_domain: loscharros.com
+openldap_organization: LosCharros
+openldap_admin_password: Password
 
-#This is the password for admin for openldap 
-openldap_server_rootpw: Password
+openldap_default_services: ldap:/// ldapi:///
+openldap_default_options: ""
 
-#The self signed ssl parameters
-openldap_server_country: FR
-openldap_server_state: Nouvelle Aquitaine
-openldap_server_location: Bordeaux
-openldap_server_organization: IT
+openldap_server_schemas:
+  - core
+  - cosine
+  - inetorgperson
+openldap_server_loglevel: none
+openldap_server_modules:
+  - back_hdb
+  - syncprov
+openldap_server_database: hdb
+openldap_server_suffix: dc=loscharros,dc=com
+openldap_server_rootdn: cn=Manager,dc=loscharros,dc=com
+openldap_server_rootpw: password
+openldap_server_indexes:
+  - objectClass,cn eq
+  - entryCSN,entryUUID eq
+openldap_server_acls:
+  - to attrs=userPassword by anonymous auth by self write by * none
+  - to * by self write by * none
+openldap_server_password_hash: "{SSHA}"
 
-openldap_server_enable_ssl: true
+openldap_dbconfig_set_cachesize: 2097152
+openldap_dbconfig_set_lk_max_objects: 1500
+openldap_dbconfig_set_lk_max_locks: 1500
+openldap_dbconfig_set_lk_max_lockers: 1500
 
-#The ldif file
-openldap_server_ldif: loscharros.ldif
+openldap_client_uri: ldap://localhost
+openldap_client_base: dc=loscharros,dc=com
+openldap_client_binddn: cn=Manager,dc=loscharros,dc=com
+openldap_client_sizelimit: 0
+openldap_client_timelimit: 0
+
+openldap_sync_syncprov_checkpoint: 50 10
+openldap_sync_syncprov_sessionlog: 100
+
+openldap_sync_consumer: False
+openldap_sync_syncrepl_rid: 001
+openldap_sync_syncrepl_provider: ldap://ldap.loscharros.com
+openldap_sync_syncrepl_type: refreshAndPersist
+openldap_sync_syncrepl_interval: 00:00:05:00
+openldap_sync_syncrepl_searchbase: "{{ openldap_server_suffix}}"
+openldap_sync_syncrepl_binddn: cn=admin,dc=loscharros,dc=com
+openldap_sync_syncrepl_credentials: secret
+openldap_sync_syncrepl_starttls: "no"
+openldap_sync_syncrepl_retry: 60 +
+openldap_sync_syncrepl_bindmethod: simple
+openldap_sync_syncrepl_timeout: 0
+openldap_sync_syncrepl_network_timeout: 0
+openldap_sync_syncrepl_keepalive: 0:0:0
+openldap_sync_syncrepl_filter: (objectclass=*)
+openldap_sync_syncrepl_scope: sub
+openldap_sync_syncrepl_schemachecking: off

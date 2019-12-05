@@ -5,8 +5,8 @@
   become: yes
   become_method: sudo
 
-  tasks:
+  roles:
 
-  - include: install_openldap
-  - include: install_ftp
-  - include: zabbix
+#  - include: install_openldap
+#  - include: install_ftp
+  - zabbix

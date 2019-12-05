@@ -1,5 +1,4 @@
 ---
-- name: Converge
-  hosts: all
+- hosts: all
   roles:
-    - role: zabbix
+    - role: ansible-zabbix-server

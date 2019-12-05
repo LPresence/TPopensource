@@ -1,18 +1,18 @@
 ---
 
 #The domain prefix for ldap
-openldap_server_domain_name: example.com
+openldap_server_domain_name: loscharros.com
 
 #This is the password for admin for openldap 
-openldap_server_rootpw: passme
+openldap_server_rootpw: Password
 
 #The self signed ssl parameters
-openldap_server_country: US
-openldap_server_state: oregon
-openldap_server_location: portland
+openldap_server_country: FR
+openldap_server_state: Nouvelle Aquitaine
+openldap_server_location: Bordeaux
 openldap_server_organization: IT
 
 openldap_server_enable_ssl: true
 
 #The ldif file
-openldap_server_ldif: domain.ldif
+openldap_server_ldif: loscharros.ldif

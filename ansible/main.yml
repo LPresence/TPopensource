@@ -10,3 +10,4 @@
    - install_openldap
 #  - include: install_ftp
 #  - zabbix
+   - zabbix-web

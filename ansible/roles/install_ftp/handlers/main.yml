@@ -1,2 +1,8 @@
+# roles/vsftpd/handlers/main.yml
 ---
-# handlers file for install_ftp
+
+- name: restart vsftpd
+  service:
+    name: "{{ vsftpd_service }}"
+    state: restarted
+

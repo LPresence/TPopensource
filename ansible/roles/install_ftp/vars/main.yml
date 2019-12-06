@@ -1,2 +1,15 @@
 ---
-# vars file for install_ftp
+
+vsftpd_packages: vsftpd
+
+vsftpd_service: vsftpd
+
+vsftpd_config_file: /etc/vsftpd.conf
+
+vsftpd_local_enable: YES
+
+vsftpd_write_enable: YES
+
+vsftpd_local_root: /FTP
+
+vsftpd_anon_root: /FTP

@@ -1,2 +1,75 @@
 ---
 # tasks file for install_ftp
+- debug:
+    msg: "{{ ansible_os_family }}" 
+- name: Include OS-specific variables
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_os_family }}.yml"
+    - main.yml
+  tags: vsftpd
+
+- name: Create ftp folder
+  file:
+    path: /FTP
+    state: directory
+    mode: 0777
+    
+- name: Install Vsftpd
+  package:
+    name: '{{ vsftpd_packages }}'
+    state: present
+  tags: vsftpd
+
+- include_tasks: selinux.yml
+  when: ansible_selinux is defined and ansible_selinux != false and ansible_selinux.status == 'enabled'
+
+- name: Ensure `anon_root` exists
+  file:
+    path: '{{ vsftpd_anon_root }}'
+    state: directory
+    owner: '{{ vsftpd_owner }}'
+    group: '{{ vsftpd_group }}'
+    mode: '{{ vsftpd_mode }}'
+    setype: '{{ vsftpd_setype }}'
+  when: vsftpd_anon_root is defined
+  tags: vsftpd
+
+- name: Ensure `local_root` exists
+  file:
+    path: '{{ vsftpd_local_root }}'
+    state: directory
+    owner: '{{ vsftpd_owner }}'
+    group: '{{ vsftpd_group }}'
+    mode: '{{ vsftpd_mode }}'
+    setype: '{{ vsftpd_setype }}'
+  when: vsftpd_local_root is defined
+  tags: vsftpd
+
+- name: Install configuration file
+  template:
+    src:   etc_vsftpd_vsftpd.conf.j2
+    dest: "{{ vsftpd_config_file }}"
+    mode: '0600'
+    #validate: 'vsftpd -olisten=NO %s'
+    #  validation always exits with status 1, even if everything seems ok
+  notify: restart vsftpd
+  tags: vsftpd
+
+- name: Add extra (ACL) permissions
+  acl:
+    name: "{{ item.folder }}"
+    entity: "{{ item.entity }}"
+    etype: "{{ item.etype }}"
+    permissions: "{{ item.permissions }}"
+    state: present
+  with_items: "{{ vsftpd_extra_permissions }}"
+  when: vsftpd_extra_permissions is defined
+  tags: vsftpd
+
+- name: Ensure service is started
+  service:
+    name: '{{ vsftpd_service }}'
+    state: started
+    enabled: true
+  tags: vsftpd

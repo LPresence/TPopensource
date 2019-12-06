@@ -1,0 +1,22 @@
+galaxy_info:
+  author: hanru
+  description: Lsyncd Configurations
+  #company: your company (optional)
+  license: MIT
+  min_ansible_version: 2.0
+  platforms:
+    - name: Debian
+      versions:
+        - jessie
+        - stretch
+    - name: Ubuntu
+      versions:
+        - trusty
+        - xenial
+  galaxy_tags:
+    - debian
+    - lsyncd
+    - rsync
+    - ubuntu
+
+dependencies: []

@@ -5,6 +5,15 @@
 Dans le cadre du cours Open Source, réalisation d'un projet :
 Mise en place d'une infrastructure avec déploiement automatisé de machines virtuelles, une configuration automatisée des services installés, ainsi qu'une sauvegarde de ces machines.
 
+Nous avons décidé de partir sur un cas de figure que des entreprises peuvent rencontrer, dans le cadre d'un siege et de sucursalles.
+
+L'entreprise est composée de 3 sites : 
+  - Bordeaux :  Site principale
+  - Toulouse :  Succursale n°1
+  - Paris    :  Succursale n°2
+
+Nous avons également un VPS chez OVH pour assurer une fonction de sauvgarde des donneés.
+
 Les serveurs seront hébergées sur la plateforme Microsoft Azure.
 
 A l'aide de l'offre étudiante Ynov, nous bénéficions d'un crédit de 100$ pour utiliser cette plateforme.
@@ -23,11 +32,9 @@ Le modèle de ces serveurs est le Standard_F2sv2, avec comme configuration :
   - 2 vCPU
   - 1 NIC
   - 4 HDD
+  
+  
 
-L'entreprise est composée de 3 sites : 
-  - Bordeaux :  Site principale
-  - Toulouse :  Succursale n°1
-  - Paris    :  Succursale n°2
   
   1 serveur sera disposé sur chaque site.
 

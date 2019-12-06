@@ -1,0 +1,445 @@
+---
+- name: "NOTSCORED | 6_1_1 | PATCH | Audit system file permissions"
+  command: /bin/true
+  changed_when: false
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_1_1_Audit_system_file_permissions
+  tags:
+      - level2
+      - notscored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_1_1_Audit_system_file_permissions
+      - notimplemented
+
+- name: "SCORED | 6_1_2 | PATCH | Ensure permissions on /etc/passwd are configured"
+  file:
+      dest: /etc/passwd
+      owner: root
+      group: root
+      mode: 0644
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_1_2_Ensure_permissions_on_etcpasswd_are_configured
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_1_2_Ensure_permissions_on_etcpasswd_are_configured
+
+- name: "SCORED | 6_1_3 | PATCH | Ensure permissions on /etc/shadow are configured"
+  file:
+      dest: /etc/shadow
+      owner: root
+      group: shadow
+      mode: 0640
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_1_3_Ensure_permissions_on_etcshadow_are_configured
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_1_3_Ensure_permissions_on_etcshadow_are_configured
+
+- name: "SCORED | 6_1_4 | PATCH | Ensure permissions on /etc/group are configured"
+  file:
+      dest: /etc/group
+      owner: root
+      group: root
+      mode: 0644
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_1_4_Ensure_permissions_on_etcgroup_are_configured
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_1_4_Ensure_permissions_on_etcgroup_are_configured
+
+- name: "SCORED | 6_1_5 | PATCH | Ensure permissions on /etc/gshadow are configured"
+  file:
+      dest: /etc/gshadow
+      owner: root
+      group: shadow
+      mode: 0640
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_1_5_Ensure_permissions_on_etcgshadow_are_configured
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_1_5_Ensure_permissions_on_etcgshadow_are_configured
+
+- name: "SCORED | 6_1_6 | PATCH | Ensure permissions on /etc/passwd- are configured"
+  file:
+      dest: /etc/passwd-
+      owner: root
+      group: root
+      mode: 0644
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_1_6_Ensure_permissions_on_etcpasswd-_are_configured
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_1_6_Ensure_permissions_on_etcpasswd-_are_configured
+
+- name: "SCORED | 6_1_7 | PATCH | Ensure permissions on /etc/shadow- are configured"
+  file:
+      dest: /etc/shadow-
+      owner: root
+      group: shadow
+      mode: 0640
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_1_7_Ensure_permissions_on_etcshadow-_are_configured
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_1_7_Ensure_permissions_on_etcshadow-_are_configured
+
+- name: "SCORED | 6_1_8 | PATCH | Ensure permissions on /etc/group- are configured"
+  file:
+      dest: /etc/group-
+      owner: root
+      group: root
+      mode: 0644
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_1_8_Ensure_permissions_on_etcgroup-_are_configured
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_1_8_Ensure_permissions_on_etcgroup-_are_configured
+
+- name: "SCORED | 6_1_9 | PATCH | Ensure permissions on /etc/gshadow- are configured"
+  file:
+      dest: /etc/gshadow-
+      owner: root
+      group: shadow
+      mode: 0640
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_1_9_Ensure_permissions_on_etcgshadow-_are_configured
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_1_9_Ensure_permissions_on_etcgshadow-_are_configured
+
+- name: "SCORED | 6_1_10 | PATCH | Ensure no world writable files exist"
+  command: /bin/true
+  changed_when: false
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_1_10_Ensure_no_world_writable_files_exist
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_1_10_Ensure_no_world_writable_files_exist
+      - notimplemented
+
+- name: "SCORED | 6_1_11 | PATCH | Ensure no unowned files or directories exist"
+  command: /bin/true
+  changed_when: false
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_1_11_Ensure_no_unowned_files_or_directories_exist
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_1_11_Ensure_no_unowned_files_or_directories_exist
+      - notimplemented
+
+- name: "SCORED | 6_1_12 | PATCH | Ensure no ungrouped files or directories exist"
+  command: /bin/true
+  changed_when: false
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_1_12_Ensure_no_ungrouped_files_or_directories_exist
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_1_12_Ensure_no_ungrouped_files_or_directories_exist
+      - notimplemented
+
+- name: "NOTSCORED | 6_1_13 | PATCH | Audit SUID executables"
+  command: /bin/true
+  changed_when: false
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_1_13_Audit_SUID_executables
+  tags:
+      - level1
+      - notscored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_1_13_Audit_SUID_executables
+      - notimplemented
+
+- name: "NOTSCORED | 6_1_14 | PATCH | Audit SGID executables"
+  command: /bin/true
+  changed_when: false
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_1_14_Audit_SGID_executables
+  tags:
+      - level1
+      - notscored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_1_14_Audit_SGID_executables
+      - notimplemented
+
+- name: "SCORED | 6_2_1 | PATCH | Ensure password fields are not empty"
+  command: passwd -l {{ item }}
+  changed_when: false
+  failed_when: false
+  with_items: "{{ empty_password_accounts_stdout_lines }}"
+  when:
+      - empty_password_accounts_rc
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_2_1_Ensure_password_fields_are_not_empty
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_2_1_Ensure_password_fields_are_not_empty
+
+- name: "SCORED | 6_2_2 | PATCH | Ensure no legacy '+' entries exist in /etc/passwd"
+  command: sed -i '/^+/ d' /etc/passwd
+  changed_when: false
+  failed_when: false
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_2_2_Ensure_no_legacy__entries_exist_in_etcpasswd
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_2_2_Ensure_no_legacy__entries_exist_in_etcpasswd
+
+- name: "SCORED | 6_2_3 | PATCH | Ensure no legacy '+' entries exist in /etc/shadow"
+  command: sed -i '/^+/ d' /etc/shadow
+  changed_when: false
+  failed_when: false
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_2_3_Ensure_no_legacy__entries_exist_in_etcshadow
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_2_3_Ensure_no_legacy__entries_exist_in_etcshadow
+
+- name: "SCORED | 6_2_4 | PATCH | Ensure no legacy '+' entries exist in /etc/group"
+  command: sed -i '/^+/ d' /etc/group
+  changed_when: false
+  failed_when: false
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_2_4_Ensure_no_legacy__entries_exist_in_etcgroup
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_2_4_Ensure_no_legacy__entries_exist_in_etcgroup
+
+- name: "SCORED | 6_2_5 | PATCH | Ensure root is the only UID 0 account"
+  command: passwd -l {{ item }}
+  changed_when: false
+  failed_when: false
+  with_items: "{{ uid_zero_accounts_except_root_stdout_lines }}"
+  when:
+      - uid_zero_accounts_except_root_rc
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_2_5_Ensure_root_is_the_only_UID_0_account
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_2_5_Ensure_root_is_the_only_UID_0_account
+
+- name: "SCORED | 6_2_6 | PATCH | Ensure root PATH Integrity"
+  command: /bin/true
+  changed_when: false
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_2_6_Ensure_root_PATH_Integrity
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_2_6_Ensure_root_PATH_Integrity
+      - notimplemented
+
+- name: "SCORED | 6_2_6 | PATCH | Ensure root PATH Integrity"
+  shell: |
+    sudopath=($(grep secure_path /etc/sudoers | cut -f2 -d= |cut -f2 -d\"))
+    IFS=:
+    for i in ${sudopath[*]}
+    do
+      if [ -d "$i" ]
+        then newsudopath+=($i)
+      fi
+     done
+    echo "${newsudopath[*]}"
+  args:
+      executable: /bin/bash
+  register: fixsudo
+  changed_when: false
+  check_mode: false
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_2_6_Ensure_root_PATH_Integrity
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_2_6_Ensure_root_PATH_Integrity
+
+- name: "SCORED | 6_2_6 | PATCH | Ensure root PATH Integrity"
+  lineinfile:
+      dest: /etc/sudoers
+      regexp: "(_*secure_path=)_*"
+      line: '\1"{{ fixsudo_stdout_lines[0] }}"'
+      backrefs: true
+  when:
+      - fixsudo_stdout_lines[0] != ""
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_2_6_Ensure_root_PATH_Integrity
+
+- name: "SCORED | 6_2_7 | PATCH | Ensure all users' home directories exist"
+  command: /bin/true
+  changed_when: false
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_2_7_Ensure_all_users_home_directories_exist
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_2_7_Ensure_all_users_home_directories_exist
+      - notimplemented
+
+- name: "SCORED | 6_2_8 | PATCH | Ensure users' home directories permissions are 750 or more restrictive"
+  command: /bin/true
+  changed_when: false
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_2_8_Ensure_users_home_directories_permissions_are_750_or_more_restrictive
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_2_8_Ensure_users_home_directories_permissions_are_750_or_more_restrictive
+      - notimplemented
+
+- name: "SCORED | 6_2_9 | PATCH | Ensure users own their home directories"
+  command: /bin/true
+  changed_when: false
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_2_9_Ensure_users_own_their_home_directories
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_2_9_Ensure_users_own_their_home_directories
+      - notimplemented
+
+- name: "SCORED | 6_2_10 | PATCH | Ensure users' dot files are not group or world writable"
+  command: /bin/true
+  changed_when: false
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_2_10_Ensure_users_dot_files_are_not_group_or_world_writable
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_2_10_Ensure_users_dot_files_are_not_group_or_world_writable
+      - notimplemented
+
+- name: "SCORED | 6_2_11 | PATCH | Ensure no users have _forward files"
+  file:
+      state: absent
+      dest: "~{{ item }}/_forward"
+  with_items: "{{ users_stdout_lines }}"
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_2_11_Ensure_no_users_have__forward_files
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_2_11_Ensure_no_users_have__forward_files
+
+- name: "SCORED | 6_2_12 | PATCH | Ensure no users have _netrc files"
+  file:
+      state: absent
+      dest: "~{{ item }}/_netrc"
+  with_items: "{{ users_stdout_lines }}"
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_2_12_Ensure_no_users_have__netrc_files
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_2_12_Ensure_no_users_have__netrc_files
+
+- name: "SCORED | 6_2_14 | PATCH | Ensure no users have _rhosts files"
+  file:
+      state: absent
+      dest: "~{{ item }}/_rhosts"
+  with_items: "{{ users_stdout_lines }}"
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_2_14_Ensure_no_users_have__rhosts_files
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_2_14_Ensure_no_users_have__rhosts_files
+
+- name: "SCORED | 6_2_15 | PATCH | Ensure all groups in /etc/passwd exist in /etc/group"
+  command: /bin/true
+  changed_when: false
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_2_15_Ensure_all_groups_in_etcpasswd_exist_in_etcgroup
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_2_15_Ensure_all_groups_in_etcpasswd_exist_in_etcgroup
+      - notimplemented
+
+- name: "SCORED | 6_2_16 | PATCH | Ensure no duplicate UIDs exist"
+  command: /bin/true
+  changed_when: false
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_2_16_Ensure_no_duplicate_UIDs_exist
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_2_16_Ensure_no_duplicate_UIDs_exist
+      - notimplemented
+
+- name: "SCORED | 6_2_17 | PATCH | Ensure no duplicate GIDs exist"
+  command: /bin/true
+  changed_when: false
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_2_17_Ensure_no_duplicate_GIDs_exist
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_2_17_Ensure_no_duplicate_GIDs_exist
+      - notimplemented
+
+- name: "SCORED | 6_2_18 | PATCH | Ensure no duplicate user names exist"
+  command: /bin/true
+  changed_when: false
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_2_18_Ensure_no_duplicate_user_names_exist
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_2_18_Ensure_no_duplicate_user_names_exist
+      - notimplemented
+
+- name: "SCORED | 6_2_19 | PATCH | Ensure no duplicate group names exist"
+  command: /bin/true
+  changed_when: false
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_2_19_Ensure_no_duplicate_group_names_exist
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_6_2_19_Ensure_no_duplicate_group_names_exist
+      - notimplemented

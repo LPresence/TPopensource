@@ -1,0 +1,16 @@
+---
+- import_tasks: include-vars.yml
+
+- import_tasks: install.yml
+  when: openldap_is_setup == false
+- import_tasks: config.yml
+  when: openldap_is_setup == false
+
+- include_tasks: manage_user.yml
+  with_items: "{{ openldap_users }}"
+
+- include_tasks: manage_entry.yml
+  with_items: "{{ openldap_entries }}"
+
+- include_tasks: manage_ou.yml
+  with_items: "{{ openldap_ous }}"

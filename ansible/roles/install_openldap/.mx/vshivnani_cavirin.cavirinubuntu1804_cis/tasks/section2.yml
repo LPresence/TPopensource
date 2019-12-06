@@ -1,0 +1,725 @@
+---
+- name: "SCORED | 2_1_1 | PATCH | Ensure chargen services are not enabled | chargen-dgram,chargen-stream"
+  block:
+      - name: "SCORED | 2_1_1 | PATCH | Ensure chargen services are not enabled | chargen-dgram"
+        stat:
+            path: /etc/xinetd_d/chargen-dgram
+        register: chargen_dgram_service
+
+      - name: "SCORED | 2_1_1 | PATCH | Ensure chargen services are not enabled | chargen-dgram"
+        command: chkconfig chargen-dgram off
+        notify: restart xinetd
+        when:
+            - chargen_dgram_service_stat_exists
+
+      - name: "SCORED | 2_1_1 | PATCH | Ensure chargen services are not enabled | chargen-stream"
+        stat:
+            path: /etc/xinetd_d/chargen-stream
+        register: chargen_stream_service
+
+      - name: "SCORED | 2_1_1 | PATCH | Ensure chargen services are not enabled | chargen-stream"
+        command: chkconfig chargen-stream off
+        notify: restart xinetd
+        when:
+            - chargen_stream_service_stat_exists
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_1_1_Ensure_chargen_services_are_not_enabled
+  tags:
+      - level1
+      - scored
+      - services
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_1_1_Ensure_chargen_services_are_not_enabled
+      - skip_ansible_lint
+
+- name: "SCORED | 2_1_2 | PATCH | Ensure daytime services are not enabled | daytime-dgram,daytime-stream"
+  block:
+      - name: "SCORED | 2_1_2 | PATCH | Ensure daytime services are not enabled | daytime-dgram"
+        stat:
+            path: /etc/xinetd_d/daytime-dgram
+        register: daytime_dgram_service
+
+      - name: "SCORED | 2_1_2 | PATCH | Ensure daytime services are not enabled | daytime-dgram"
+        command: chkconfig daytime-dgram off
+        notify: restart xinetd
+        when:
+            - daytime_dgram_service_stat_exists
+
+      - name: "SCORED | 2_1_2 | PATCH | Ensure daytime services are not enabled | daytime-stream"
+        stat:
+            path: /etc/xinetd_d/daytime-stream
+        register: daytime_stream_service
+
+      - name: "SCORED | 2_1_2 | PATCH | Ensure daytime services are not enabled | daytime-stream"
+        command: chkconfig daytime-stream off
+        notify: restart xinetd
+        when:
+            - daytime_stream_service_stat_exists
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_1_2_Ensure_daytime_services_are_not_enabled
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_1_2_Ensure_daytime_services_are_not_enabled
+      - skip_ansible_lint
+
+- name: "SCORED | 2_1_3 | PATCH | Ensure discard services are not enabled | discard-dgram,discard-stream"
+  block:
+      - name: "SCORED | 2_1_3 | PATCH | Ensure discard services are not enabled | discard-dgram"
+        stat:
+            path: /etc/xinetd_d/discard-dgram
+        register: discard_dgram_service
+
+      - name: "SCORED | 2_1_3 | PATCH | Ensure discard services are not enabled | discard-dgram"
+        command: chkconfig discard-dgram off
+        notify: restart xinetd
+        when:
+            - discard_dgram_service_stat_exists
+
+      - name: "SCORED | 2_1_3 | PATCH | Ensure discard services are not enabled | discard-stream"
+        stat:
+            path: /etc/xinetd_d/discard-stream
+        register: discard_stream_service
+
+      - name: "SCORED | 2_1_3 | PATCH | Ensure discard services are not enabled | discard-stream"
+        command: chkconfig discard-stream off
+        notify: restart xinetd
+        when:
+            - discard_stream_service_stat_exists
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_1_3_Ensure_discard_services_are_not_enabled
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_1_3_Ensure_discard_services_are_not_enabled
+      - skip_ansible_lint
+
+- name: "SCORED | 2_1_4 | PATCH | Ensure echo services are not enabled | echo-dgram,echo-stream"
+  block:
+      - name: "SCORED | 2_1_4 | PATCH | Ensure echo services are not enabled | echo-dgram"
+        stat:
+            path: /etc/xinetd_d/echo-dgram
+        register: echo_dgram_service
+
+      - name: "SCORED | 2_1_4 | PATCH | Ensure echo services are not enabled | echo-dgram"
+        command: chkconfig echo-dgram off
+        notify: restart xinetd
+        when:
+            - echo_dgram_service_stat_exists
+
+      - name: "SCORED | 2_1_4 | PATCH | Ensure echo services are not enabled | echo-stream"
+        stat:
+            path: /etc/xinetd_d/echo-stream
+        register: echo_stream_service
+
+      - name: "SCORED | 2_1_4 | PATCH | Ensure echo services are not enabled | echo-stream"
+        command: chkconfig echo-stream off
+        notify: restart xinetd
+        when:
+            - echo_stream_service_stat_exists
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_1_4_Ensure_echo_services_are_not_enabled
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_1_4_Ensure_echo_services_are_not_enabled
+      - skip_ansible_lint
+
+- name: "SCORED | 2_1_5 | PATCH | Ensure time services are not enabled | time-dgram,time-stream"
+  block:
+      - name: "SCORED | 2_1_5 | PATCH | Ensure time services are not enabled | time-dgram"
+        stat:
+            path: /etc/xinetd_d/time-dgram
+        register: time_dgram_service
+
+      - name: "SCORED | 2_1_5 | PATCH | Ensure time services are not enabled | time-dgram"
+        command: chkconfig time-dgram off
+        notify: restart xinetd
+        when:
+            - time_dgram_service_stat_exists
+
+      - name: "SCORED | 2_1_5 | PATCH | Ensure time services are not enabled | time-stream"
+        stat:
+            path: /etc/xinetd_d/time-stream
+        register: time_stream_service
+
+      - name: "SCORED | 2_1_5 | PATCH | Ensure time services are not enabled | time-stream"
+        command: chkconfig time-stream off
+        notify: restart xinetd
+        when:
+            - time_stream_service_stat_exists
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_1_5_Ensure_time_services_are_not_enabled
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_1_5_Ensure_time_services_are_not_enabled
+      - skip_ansible_lint
+
+- name: "SCORED | 2_1_6 | PATCH | Ensure tftp server is not enabled"
+  block:
+      - name: "SCORED | 2_1_6 | PATCH | Ensure tftp server is not enabled"
+        stat:
+            path: /etc/xinetd_d/tftp
+        register: tftp_service
+
+      - name: "SCORED | 2_1_6 | PATCH | Ensure tftp server is not enabled"
+        command: chkconfig tftp off
+        notify: restart xinetd
+        when:
+            - tftp_service_stat_exists
+            - ubuntu1804cis_tftp_server == false
+        tags:
+            - skip_ansible_lint
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_1_6_Ensure_rsh_server_is_not_enabled
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_1_6_Ensure_rsh_server_is_not_enabled
+
+- name: "SCORED | 2_1_7 | PATCH | Ensure xinetd is not enabled"
+  service:
+      name: xinetd
+      state: stopped
+      enabled: false
+  when:
+      - xinetd_service_status_stdout == "loaded"
+      - not ubuntu1804cis_xinetd_required
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_1_7_Ensure_talk_server_is_not_enabled
+  tags:
+      - level1
+      - patch
+      - scored
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_1_7_Ensure_talk_server_is_not_enabled
+
+- name: "NOTSCORED | 2_2_1_1 | PATCH | Ensure time synchronization is in use"
+  block:
+      - name: "NOTSCORED | 2_2_1_1 | PATCH | Ensure time synchronization is in use - service install"
+        apt:
+            name: "{{ ubuntu1804cis_time_synchronization }}"
+            state: present
+            install_recommends: false
+
+      - name: "NOTSCORED | 2_2_1_1 | PATCH | Ensure time synchronization is in use - service start"
+        service:
+            name: "{{ ubuntu1804cis_time_synchronization }}"
+            state: started
+            enabled: true
+
+      - name: "NOTSCORED | 2_2_1_1 | PATCH | Ensure time synchronization is in use - service stop ntp"
+        service:
+            name: "{{ ntp_service[ansible_os_family] }}"
+            state: stopped
+            enabled: false
+        when:
+            - ubuntu1804cis_time_synchronization == "chrony"
+            - ntpd_service_status_stdout == "loaded"
+
+      - name: "NOTSCORED | 2_2_1_1 | PATCH | Ensure time synchronization is in use - service stop chrony"
+        service:
+            name: chronyd
+            state: stopped
+            enabled: false
+        ignore_errors: true
+        when:
+            - ubuntu1804cis_time_synchronization == "ntp"
+            - chronyd_service_status_stdout == "loaded"
+
+  when:
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_1_1_Ensure_time_synchronization_is_in_use
+  tags:
+      - level1
+      - notscored
+      - ntp
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_1_1_Ensure_time_synchronization_is_in_use
+
+- name: "SCORED | 2_2_1_2 | PATCH | Ensure ntp is configured"
+  block:
+      - name: "SCORED | 2_2_1_2 | PATCH | Ensure ntp is configured | modify /etc/ntp_conf"
+        template:
+            src: ntp_conf_j2
+            dest: /etc/ntp_conf
+            owner: root
+            group: root
+            mode: 0644
+
+      - name: "SCORED | 2_2_1_2 | PATCH | Ensure ntp is configured | modify /etc/init_d/ntp"
+        lineinfile:
+            dest: /etc/init_d/ntp
+            regexp: "^RUNASUSER"
+            line: "RUNASUSER=ntp"
+  when:
+      - ubuntu1804cis_time_synchronization == "ntp"
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_1_2_Ensure_ntp_is_configured
+  tags:
+      - level1
+      - scored
+      - ntp
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_1_2_Ensure_ntp_is_configured
+
+- name: "SCORED | 2_2_1_3 | PATCH | Ensure chrony is configured"
+  template:
+      src: chrony_conf_j2
+      dest: "{{ chrony_config_file[ansible_os_family] }}"
+      owner: root
+      group: root
+      mode: 0644
+  when:
+      - ubuntu1804cis_time_synchronization == "chrony"
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_1_3_Ensure_chrony_is_configured
+  tags:
+      - level1
+      - scored
+      - ntp
+      - chrony
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_1_3_Ensure_chrony_is_configured
+
+- name: "SCORED | 2_2_1_3 | PATCH | Ensure chrony is configured | modify /etc/sysconfig/chronyd | 1"
+  lineinfile:
+      dest: /etc/sysconfig/chronyd
+      regexp: "^(#)?OPTIONS"
+      line: "OPTIONS=\"-u chrony\""
+      state: present
+      create: true
+  when:
+      - ubuntu1804cis_time_synchronization == "chrony"
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_1_3_Ensure_chrony_is_configured
+  tags:
+      - level1
+      - scored
+      - ntp
+      - chrony
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_1_3_Ensure_chrony_is_configured
+
+- name: "SCORED | 2_2_2 | PATCH | Ensure X Window System is not installed"
+  apt:
+      name: "{{ item }}"
+      state: absent
+  with_items:
+      - "@X Window System"
+      - "x11*"
+  when:
+      - ubuntu1804cis_xwindows_required == false
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_2_Ensure_X_Window_System_is_not_installed
+  tags:
+      - level1
+      - scored
+      - xwindows
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_2_Ensure_X_Window_System_is_not_installed
+
+- name: "SCORED | 2_2_3 | PATCH | Ensure Avahi Server is not enabled"
+  service:
+      name: avahi-daemon
+      state: stopped
+      enabled: false
+  when:
+      - ubuntu1804cis_avahi_server == false
+      - avahi_service_status_stdout == "loaded"
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_3_Ensure_Avahi_Server_is_not_enabled
+  tags:
+      - level1
+      - scored
+      - avahi
+      - services
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_3_Ensure_Avahi_Server_is_not_enabled
+
+- name: "SCORED | 2_2_4 | PATCH | Ensure CUPS is not enabled"
+  service:
+      name: cups
+      state: stopped
+      enabled: false
+  when:
+      - ubuntu1804cis_cups_server == false and cups_service_status_stdout == "loaded"
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_4_Ensure_CUPS_is_not_enabled
+  tags:
+      - level1
+      - scored
+      - cups
+      - services
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_4_Ensure_CUPS_is_not_enabled
+
+- name: "SCORED | 2_2_5 | PATCH | Ensure DHCP Server is not enabled"
+  service:
+      name: dhcpd
+      state: stopped
+      enabled: false
+  when:
+      - ubuntu1804cis_dhcp_server == false
+      - dhcpd_service_status_stdout == "loaded"
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_5_Ensure_DHCP_Server_is_not_enabled
+  tags:
+      - level1
+      - scored
+      - dhcp
+      - services
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_5_Ensure_DHCP_Server_is_not_enabled
+
+- name: "SCORED | 2_2_6 | PATCH | Ensure LDAP server is not enabled"
+  service:
+      name: slapd
+      state: stopped
+      enabled: false
+  when:
+      - ubuntu1804cis_ldap_server == false and slapd_service_status_stdout == "loaded"
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_6_Ensure_LDAP_server_is_not_enabled
+  tags:
+      - level1
+      - scored
+      - ldap
+      - services
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_6_Ensure_LDAP_server_is_not_enabled
+
+- name: "SCORED | 2_2_7 | PATCH | Ensure NFS and RPC are not enabled"
+  service:
+      name: nfs
+      state: stopped
+      enabled: false
+  when:
+      - ubuntu1804cis_nfs_rpc_server == false and nfs_service_status_stdout == "loaded"
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_7_Ensure_NFS_and_RPC_are_not_enabled
+  tags:
+      - level1
+      - scored
+      - nfs
+      - rpc
+      - services
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_7_Ensure_NFS_and_RPC_are_not_enabled
+
+- name: "SCORED | 2_2_7 | PATCH | Ensure RPC is not enabled"
+  service:
+      name: rpcbind
+      state: stopped
+      enabled: false
+  when:
+      - ubuntu1804cis_nfs_rpc_server == false
+      - rpcbind_service_status_stdout == "loaded"
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_7_Ensure_NFS_and_RPC_are_not_enabled
+  tags:
+      - level1
+      - scored
+      - nfs
+      - rpc
+      - services
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_7_Ensure_NFS_and_RPC_are_not_enabled
+
+- name: "SCORED | 2_2_8 | PATCH | Ensure DNS Server is not enabled"
+  service:
+      name: named
+      state: stopped
+      enabled: false
+  when:
+      - ubuntu1804cis_named_server == false and named_service_status_stdout == "loaded"
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_8_Ensure_DNS_Server_is_not_enabled
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_8_Ensure_DNS_Server_is_not_enabled
+
+- name: "SCORED | 2_2_9 | PATCH | Ensure FTP Server is not enabled"
+  service:
+      name: vsftpd
+      state: stopped
+      enabled: false
+  when:
+      - ubuntu1804cis_vsftpd_server == false
+      - vsftpd_service_status_stdout == "loaded"
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_9_Ensure_FTP_Server_is_not_enabled
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_9_Ensure_FTP_Server_is_not_enabled
+
+- name: "SCORED | 2_2_10 | PATCH | Ensure HTTP server is not enabled"
+  service:
+      name: httpd
+      state: stopped
+      enabled: false
+  when:
+      - ubuntu1804cis_httpd_server == false
+      - httpd_service_status_stdout == "loaded"
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_10_Ensure_HTTP_server_is_not_enabled
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_10_Ensure_HTTP_server_is_not_enabled
+
+- name: "SCORED | 2_2_11 | PATCH | Ensure IMAP and POP3 server is not enabled"
+  service:
+      name: dovecot
+      state: stopped
+      enabled: false
+  when:
+      - ubuntu1804cis_dovecot_server == false
+      - dovecot_service_status_stdout == "loaded"
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_11_Ensure_IMAP_and_POP3_server_is_not_enabled
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_11_Ensure_IMAP_and_POP3_server_is_not_enabled
+
+- name: "SCORED | 2_2_12 | PATCH | Ensure Samba is not enabled"
+  service:
+      name: smb
+      state: stopped
+      enabled: false
+  when:
+      - ubuntu1804cis_smb_server == false and smb_service_status_stdout == "loaded"
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_12_Ensure_Samba_is_not_enabled
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_12_Ensure_Samba_is_not_enabled
+
+- name: "SCORED | 2_2_13 | PATCH | Ensure HTTP Proxy Server is not enabled"
+  service:
+      name: squid
+      state: stopped
+      enabled: false
+  when:
+      - ubuntu1804cis_squid_server == false
+      - squid_service_status_stdout == "loaded"
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_13_Ensure_HTTP_Proxy_Server_is_not_enabled
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_13_Ensure_HTTP_Proxy_Server_is_not_enabled
+
+- name: "SCORED | 2_2_14 | PATCH | Ensure SNMP Server is not enabled"
+  service:
+      name: snmpd
+      state: stopped
+      enabled: false
+  when:
+      - ubuntu1804cis_snmp_server == false
+      - snmpd_service_status_stdout == "loaded"
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_14_Ensure_SNMP_Server_is_not_enabled
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_14_Ensure_SNMP_Server_is_not_enabled
+
+- name: "SCORED | 2_2_15 | PATCH | Ensure mail transfer agent is configured for local-only mode"
+  lineinfile:
+      dest: /etc/postfix/main_cf
+      regexp: "^(#)?inet_interfaces"
+      line: "inet_interfaces = localhost"
+  when:
+      - ubuntu1804cis_is_mail_server == false
+      - postfix_installed_rc == 0
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_15_Ensure_mail_transfer_agent_is_configured_for_local-only_mode
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_15_Ensure_mail_transfer_agent_is_configured_for_local-only_mode
+
+- name: "SCORED | 2_2_16 | PATCH | Ensure NIS Server is not enabled"
+  service:
+      name: ypserv
+      state: stopped
+      enabled: false
+  when:
+      - ubuntu1804cis_nis_server == false and ypserv_service_status_stdout == "loaded"
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_16_Ensure_rsync_service_is_not_enabled
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_16_Ensure_rsync_service_is_not_enabled
+
+- name: "SCORED | 2_2_17 | PATCH | Ensure rsh server is not enabled | rsh"
+  service:
+      name: rsh_socket
+      state: stopped
+      enabled: false
+  when:
+      - ubuntu1804cis_rsh_server == false
+      - rsh_service_status_stdout == "loaded"
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_17_Ensure_NIS_Server_is_not_enabled
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_17_Ensure_NIS_Server_is_not_enabled
+
+- name: "SCORED | 2_2_17 | PATCH | Ensure rsh server is not enabled | rlogin"
+  service:
+      name: rlogin_socket
+      state: stopped
+      enabled: false
+  when:
+      - ubuntu1804cis_rsh_server == false
+      - rlogin_service_status_stdout == "loaded"
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_17_Ensure_NIS_Server_is_not_enabled
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_17_Ensure_NIS_Server_is_not_enabled
+
+- name: "SCORED | 2_2_17 | PATCH | Ensure rsh server is not enabled | rexec"
+  service:
+      name: rexec_socket
+      state: stopped
+      enabled: false
+  when:
+      - ubuntu1804cis_rsh_server == false
+      - rexec_service_status_stdout == "loaded"
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_17_Ensure_NIS_Server_is_not_enabled
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_17_Ensure_NIS_Server_is_not_enabled
+
+- name: "SCORED | 2_2_18 | PATCH | Ensure telnet server is not enabled"
+  service:
+      name: telnet
+      state: stopped
+      enabled: false
+  when:
+      - ubuntu1804cis_telnet_server == false
+      - telnet_service_status_stdout == "loaded"
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_18_Ensure_talk_server_is_not_enabled
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_18_Ensure_talk_server_is_not_enabled
+
+- name: "SCORED | 2_2_19 | PATCH | Ensure tftp server is not enabled"
+  service:
+      name: tftp
+      state: stopped
+      enabled: false
+  when:
+      - ubuntu1804cis_tftp_server == false
+      - tftp_service_status_stdout == "loaded"
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_19_Ensure_telnet_server_is_not_enabled
+  tags:
+      - level1
+      - scored
+      - scored
+      - insecure_services
+      - tftp
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_19_Ensure_telnet_server_is_not_enabled
+
+- name: "SCORED | 2_2_20 | PATCH | Ensure rsync service is not enabled "
+  service:
+      name: rsyncd
+      state: stopped
+      enabled: false
+  when:
+      - ubuntu1804cis_rsyncd_server == false
+      - rsyncd_service_status_stdout == "loaded"
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_20_Ensure_tftp_server_is_not_enabled
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_20_Ensure_tftp_server_is_not_enabled
+
+- name: "SCORED | 2_2_21 | PATCH | Ensure talk server is not enabled"
+  service:
+      name: ntalk
+      state: stopped
+      enabled: false
+  when:
+      - ubuntu1804cis_ntalk_server == false
+      - ntalk_service_status_stdout == "loaded"
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_21_Ensure_rsync_service_is_not_enabled
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_2_21_Ensure_rsync_service_is_not_enabled
+
+- name: "SCORED | 2_3_1 | PATCH | Ensure NIS Client is not installed"
+  apt:
+      name: ypbind
+      state: absent
+  when:
+      - ubuntu1804cis_ypbind_required == false
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_3_1_Ensure_NIS_Client_is_not_installed
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_3_1_Ensure_NIS_Client_is_not_installed
+
+- name: "SCORED | 2_3_2 | PATCH | Ensure rsh client is not installed"
+  apt:
+      name: rsh
+      state: absent
+  when:
+      - ubuntu1804cis_rsh_required == false
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_3_2_Ensure_rsh_client_is_not_installed
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_3_2_Ensure_rsh_client_is_not_installed
+
+- name: "SCORED | 2_3_3 | PATCH | Ensure talk client is not installed"
+  apt:
+      name: talk
+      state: absent
+  when:
+      - ubuntu1804cis_talk_required == false
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_3_3_Ensure_talk_client_is_not_installed
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_3_3_Ensure_talk_client_is_not_installed
+
+- name: "SCORED | 2_3_4 | PATCH | Ensure telnet client is not installed"
+  apt:
+      name: telnet
+      state: absent
+  when:
+      - ubuntu1804cis_telnet_required == false
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_3_4_Ensure_telnet_client_is_not_installed
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_3_4_Ensure_telnet_client_is_not_installed
+
+- name: "SCORED | 2_3_5 | PATCH | Ensure LDAP client is not installed"
+  apt:
+      name: openldap-clients
+      state: absent
+  when:
+      - ubuntu1804cis_openldap_clients_required == false
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_3_5_Ensure_LDAP_client_is_not_installed
+  tags:
+      - level1
+      - scored
+      - patch
+      - root_CISPP_xccdf_org_cisecurity_benchmarks_rule_2_3_5_Ensure_LDAP_client_is_not_installed

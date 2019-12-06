@@ -1,0 +1,19 @@
+---
+# Packages
+openldap_packages:
+- openldap
+- openldap-servers
+- openldap-clients
+- python-ldap
+
+# Paths
+openldap_tmpldif: /tmp/ldap.ldif
+openldap_db: /srv/ldap/db
+openldap_log: /srv/ldap/log
+openldap_dbconfig: /var/lib/ldap/DB_CONFIG
+
+# Users
+openldap_user: ldap
+openldap_group: ldap
+
+

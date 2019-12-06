@@ -1,0 +1,9 @@
+---
+
+- name: Modify ldap OU
+  ldap_entry:
+    dn: ou={{ item }},{{ openldap_domain }}
+    bind_dn: cn=Admin,{{ openldap_domain }}
+    bind_pw: "{{ openldap_rootpw }}"
+    objectClass: organizationalUnit
+

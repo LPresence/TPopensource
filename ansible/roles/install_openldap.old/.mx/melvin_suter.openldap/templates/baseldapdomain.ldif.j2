@@ -1,0 +1,20 @@
+dn: {{ openldap_domain }}
+objectClass: top
+objectClass: dcObject
+objectclass: organization
+o: {{ openldap_o }}
+dc: {{ openldap_dc }}
+
+dn: cn=Admin,{{ openldap_domain }}
+objectClass: organizationalRole
+objectClass: top
+cn: Admin
+description: Directory Admin
+
+{% for ou in openldap_ous %}
+dn: ou={{ ou }},{{ openldap_domain }}
+objectClass: organizationalUnit
+ou: {{ ou }}
+
+{% endfor %}
+

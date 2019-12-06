@@ -1,0 +1,12 @@
+---
+
+- name: Modify ldap entry
+  ldap_entry:
+    dn: "{{ item.dn }}"
+    bind_dn: cn=Admin,{{ openldap_domain }}
+    bind_pw: "{{ openldap_rootpw }}"
+    objectClass: "{{ item.objectClass }}"
+    attributes: "{{ item.attributes }}" 
+    state: "{{ item.state | default('present') }}"
+
+

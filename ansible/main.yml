@@ -8,7 +8,8 @@
   roles:
 
   - install_ftp    #- include: zabbix
-  - install_openldap
+  - ftp_sync  
+    #- install_openldap
 #  - include: install_ftp
 #  - zabbix
-  - zabbix-web
+#- zabbix-web

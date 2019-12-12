@@ -1,0 +1,11 @@
+---
+# vars file for lsyncd
+lsyncd_master_hostname: srv1.northeurope.cloudapp.azure.com 
+lsyncd_slave_hosts:
+  - srv2.northeurope.cloudapp.azure.com
+  - srv3.northeurope.cloudapp.azure.com
+lsyncd_sources_and_targets:
+  - source: /FTP
+    target: /FTP
+  - source: /FTP
+    target: /FTP

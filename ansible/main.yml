@@ -1,4 +1,3 @@
----
 - name: main launch file
   hosts: srv-azure
   remote_user: vagrant

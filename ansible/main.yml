@@ -1,4 +1,3 @@
----
 - name: main launch file
   hosts: all
   remote_user: vagrant
@@ -7,9 +6,9 @@
 
   roles:
 
-  - install_ftp    #- include: zabbix
-  - ftp_sync  
-    #- install_openldap
-#  - include: install_ftp
-#  - zabbix
-#- zabbix-web
+#   - install_openldap
+#   - include: install_ftp
+#   - zabbix
+#   - zabbix-web
+#   - apache
+   - zabbix-agent

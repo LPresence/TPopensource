@@ -3,9 +3,32 @@
 ## Résumé
 
 Dans le cadre du cours Open Source, réalisation d'un projet :
-Mise en place d'une infrastructure avec déploiement automatisé de machines virtuelles, une configuration automatisée des services installés, ainsi qu'une sauvegarde de ces machines.
+Mise en place d'une infrastructure avec déploiement automatisé de machines virtuelles, avec une configuration automatisée des services qui y sont déployé et redondé, associés à une sauvegarde des données de ces machines virtuelles.
 
-Les serveurs seront hébergées sur la plateforme Microsoft Azure.
+## L'équipe
+
+Etant tous issus de milieu differents, nous avons chacun aquis divers connaissances que nous avons souahité mettre en commun pour la realisation ce TP.
+
+Notre équipe est composé de tois adminstrateurs systèmes et réseaux, Paulin, Dylan et Maxence, et d'un DevOPS Lukas .
+Nous connaissons les contraintes et les besoins à laquelle une entreprise composé de plusieurs sites peut être confronté.
+
+C'est avec cette équipe de charros que nous avons décidé de vous présenter un projet d'infrastrcuture redondée et sauvgardée.
+
+## Le projet
+
+Nous avons décidé de partir sur un cas de figure que des entreprises peuvent rencontrer, le cas d'une entreprise possédant un siege dans une ville et de deux autres sucursalles d'autres villes.
+
+Dans notre cas de figure la configuration est la suivante:
+
+L'entreprise est composée de 3 sites : 
+  - Bordeaux :  Site principale
+  - Toulouse :  Succursale n°1
+  - Paris    :  Succursale n°2
+
+Nous avons également un VPS chez OVH pour assurer une fonction de sauvgarde des donneés.
+Tel que le ferais n'importe quelle entreprise pour externaliser ses données.
+
+Les trois serveurs de production seront hébergées sur la plateforme Microsoft Azure.
 
 A l'aide de l'offre étudiante Ynov, nous bénéficions d'un crédit de 100$ pour utiliser cette plateforme.
 
@@ -23,12 +46,8 @@ Le modèle de ces serveurs est le Standard_F2sv2, avec comme configuration :
   - 2 vCPU
   - 1 NIC
   - 4 HDD
-
-L'entreprise est composée de 3 sites : 
-  - Bordeaux :  Site principale
-  - Toulouse :  Succursale n°1
-  - Paris    :  Succursale n°2
   
+   
   1 serveur sera disposé sur chaque site.
 
 Afin de faciliter et d'optimiser le déploiement de l'infrastructure, la configuration de l'ensemble des services sera effectuée via Ansible.
@@ -52,6 +71,7 @@ Configuration du serveur Zabbix :
     - Création des hôtes à surveiller
     - Création des alertes/notifications
     - Création des utilisateurs
+    
     
 ## Commandes de base
 
@@ -91,8 +111,8 @@ SRV2 : 10.0.0.2 (Toulouse)
 
 SRV3 : 10.0.0.3 (Paris)
 
-Tous les serveurs seront dans le même VLAN.
-    
+Tous les serveurs de production seront dans le même VLAN.
+Le serveur privé ayant une adresse IPV4 publique.
 
 
 Le meilleur projet, par LOS CHARROS. <3

@@ -98,8 +98,8 @@ SRV2 : 10.0.0.2 (Toulouse)
 
 SRV3 : 10.0.0.3 (Paris)
 
-Tous les serveurs seront dans le même VLAN.
-    
+Tous les serveurs de production seront dans le même VLAN.
+Le serveur privé ayant une adresse IPV4 publique.
 
 
 Le meilleur projet, par LOS CHARROS. <3

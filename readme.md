@@ -12,11 +12,13 @@ Etant tous issus de milieu differents, nous avons chacun aquis divers connaissan
 Notre équipe est composé de tois adminstrateurs systèmes et réseaux, Paulin, Dylan et Maxence, et d'un DevOPS Lukas .
 Nous connaissons les contraintes et les besoins à laquelle une entreprise composé de plusieurs sites peut être confronté.
 
-C'est avec ces équipe que nous avons décidé de vous présenter un system
+C'est avec cette équipe de charros que nous avons décidé de vous présenter un projet d'infrastrcuture redondée et sauvgardée.
 
 ## Le projet
 
-Nous avons décidé de partir sur un cas de figure que des entreprises peuvent rencontrer, dans le cadre d'un siege et de sucursalles.
+Nous avons décidé de partir sur un cas de figure que des entreprises peuvent rencontrer, le cas d'une entreprise possédant un siege dans une ville et de deux autres sucursalles d'autres villes.
+
+Dans notre cas de figure la configuration est la suivante:
 
 L'entreprise est composée de 3 sites : 
   - Bordeaux :  Site principale
@@ -24,6 +26,7 @@ L'entreprise est composée de 3 sites :
   - Paris    :  Succursale n°2
 
 Nous avons également un VPS chez OVH pour assurer une fonction de sauvgarde des donneés.
+Tel que le ferais n'importe quelle entreprise pour externaliser ses données.
 
 Les trois serveurs de production seront hébergées sur la plateforme Microsoft Azure.
 

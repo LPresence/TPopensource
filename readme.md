@@ -3,7 +3,7 @@
 ## Résumé
 
 Dans le cadre du cours Open Source, réalisation d'un projet :
-Mise en place d'une infrastructure avec déploiement automatisé de machines virtuelles, une configuration automatisée des services installés, ainsi qu'une sauvegarde de ces machines.
+Mise en place d'une infrastructure avec déploiement automatisé de machines virtuelles, avec une configuration automatisée des services qui y sont déployé et redondé, associés à une sauvegarde des données de ces machines virtuelles.
 
 ## L'équipe
 

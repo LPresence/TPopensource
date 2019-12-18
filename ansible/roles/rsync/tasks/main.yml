@@ -1,0 +1,12 @@
+---
+- name: install rsync
+  package:
+    name: rsync
+    state: present
+
+- name: Creates daily backup cronjob
+  cron: minute="00" hour="4"
+        name="Backup ftp folder"
+        user="root"
+        job="/usr/bin/rsync -a -e "ssh -p 2266" -p Brakmar /FTP local@51.91.253.163:/home/local/FTP"
+

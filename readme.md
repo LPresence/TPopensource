@@ -5,6 +5,17 @@
 Dans le cadre du cours Open Source, réalisation d'un projet :
 Mise en place d'une infrastructure avec déploiement automatisé de machines virtuelles, une configuration automatisée des services installés, ainsi qu'une sauvegarde de ces machines.
 
+## L'équipe
+
+Etant tous issus de milieu differents, nous avons chacun aquis divers connaissances que nous avons souahité mettre en commun pour la realisation ce TP.
+
+Notre équipe est composé de tois adminstrateurs systèmes et réseaux, Paulin, Dylan et Maxence, et d'un DevOPS Lukas .
+Nous connaissons les contraintes et les besoins à laquelle une entreprise composé de plusieurs sites peut être confronté.
+
+C'est avec ces équipe que nous avons décidé de vous présenter un system
+
+## Le projet
+
 Nous avons décidé de partir sur un cas de figure que des entreprises peuvent rencontrer, dans le cadre d'un siege et de sucursalles.
 
 L'entreprise est composée de 3 sites : 
@@ -14,7 +25,7 @@ L'entreprise est composée de 3 sites :
 
 Nous avons également un VPS chez OVH pour assurer une fonction de sauvgarde des donneés.
 
-Les serveurs seront hébergées sur la plateforme Microsoft Azure.
+Les trois serveurs de production seront hébergées sur la plateforme Microsoft Azure.
 
 A l'aide de l'offre étudiante Ynov, nous bénéficions d'un crédit de 100$ pour utiliser cette plateforme.
 
@@ -33,9 +44,7 @@ Le modèle de ces serveurs est le Standard_F2sv2, avec comme configuration :
   - 1 NIC
   - 4 HDD
   
-  
-
-  
+   
   1 serveur sera disposé sur chaque site.
 
 Afin de faciliter et d'optimiser le déploiement de l'infrastructure, la configuration de l'ensemble des services sera effectuée via Ansible.
@@ -59,6 +68,7 @@ Configuration du serveur Zabbix :
     - Création des hôtes à surveiller
     - Création des alertes/notifications
     - Création des utilisateurs
+    
     
 ## Commandes de base
 

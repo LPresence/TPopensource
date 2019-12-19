@@ -8,7 +8,8 @@
 
 #   - install_openldap
 #   - include: install_ftp
-#   - zabbix
-#   - zabbix-web
-#   - apache
+   - apache
+   - postgresql
+   - zabbix
+   - zabbix-web
    - zabbix-agent

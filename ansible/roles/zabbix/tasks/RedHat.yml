@@ -1,6 +1,12 @@
 ---
 # Tasks specific for RedHat systems
 
+
+- name: Put SELinux in permissive mode, logging actions that would be blocked.
+  selinux:
+    policy: targeted
+    state: permissive
+
 - name: "RedHat | Use Zabbix package name"
   set_fact:
     zabbix_server_package: "zabbix-server-{{ zabbix_server_database }}"

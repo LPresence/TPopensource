@@ -3,6 +3,6 @@ srv1.northeurope.cloudapp.azure.com
 srv2.northeurope.cloudapp.azure.com
 srv3.northeurope.cloudapp.azure.com
 [backup]
-51.91.253.163 ansible_port=2266
+#51.91.253.163 ansible_port=2266
 [srv-main]
 srv3.northeurope.cloudapp.azure.com

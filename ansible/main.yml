@@ -6,10 +6,14 @@
 
   roles:
 
-#   - install_openldap
-#   - include: install_ftp
+   - install_openldap
+   - install_ftp
    - apache
+     when: inventory_hostname in groups['srv-main']
    - postgresql
+     when: inventory_hostname in groups['srv-main']
    - zabbix
+     when: inventory_hostname in groups['srv-main']
    - zabbix-web
+     when: inventory_hostname in groups['srv-main']
    - zabbix-agent
